@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from 'next/link'
 import { motion } from "motion/react";
 
 type SocialLink = {
@@ -19,12 +20,7 @@ type HeroProps = {
 export default function Hero({ data }: HeroProps) {
   if (!data) return null;
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  
 
   return (
     <motion.section
@@ -55,18 +51,18 @@ export default function Hero({ data }: HeroProps) {
             </p>
 
             <div className="flex items-center gap-4 pt-4">
-              <button
-                onClick={() => scrollToSection("contact")}
+              <Link
+                href="#contact"
                 className="px-8 py-4 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors shadow-sm"
               >
                 Get in touch
-              </button>
-              <button
-                onClick={() => scrollToSection("projects")}
+              </Link>
+              <Link
+                href="#projects"
                 className="px-8 py-4 border border-gray-200 text-gray-600 hover:text-gray-900 hover:border-gray-400 rounded-lg transition-colors"
               >
                 View my work →
-              </button>
+              </Link>
             </div>
           </div>
 
