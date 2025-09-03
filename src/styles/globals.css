@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root{
+  --color-primary: #0ea5e9;
+  --color-secondary: #0f172a;
+  --color-accent: #f97316;
+}
+
+.bg-primary{ background-color: rgb(var(--color-primary)); }
+.border-primary{ border-color: var(--color-primary); }
+.text-primary{ color: var(--color-primary); }
+
+/* small utility to allow framer rotating spinner use border-primary class */
+.border-primary { border-color: var(--color-primary); }
+
+body { background-color: #f8fafc; }

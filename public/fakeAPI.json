@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "title": "Na8am",
+    "subtitle": "Software Engineer & Full Stack Developer",
+    "socialLinks": [
+      { "name": "GitHub", "url": "https://github.com/na8am" },
+      { "name": "LinkedIn", "url": "https://linkedin.com/in/na8am" },
+      { "name": "Twitter", "url": "https://twitter.com/na8am" },
+      { "name": "Dribbble", "url": "https://dribbble.com/na8am" }
+    ]
+  },
+  "about": {
+    "bio": "Passionate software engineer with a knack for building scalable web applications. With over 5 years of experience in full-stack development, I specialize in creating efficient, user-friendly solutions that solve real-world problems.",
+    "skills": [
+      "React.js",
+      "Node.js",
+      "TypeScript",
+      "Next.js",
+      "AWS",
+      "MongoDB"
+    ],
+    "experience": {
+      "years": "5+",
+      "companies": "4",
+      "projects": "25+"
+    }
+  },
+  "projects": [
+    {
+      "id": 1,
+      "name": "E-Commerce Platform",
+      "description": "A full-stack e-commerce solution built with Next.js, featuring real-time inventory management and payment processing.",
+      "technologies": ["Next.js", "TypeScript", "Stripe", "MongoDB"],
+      "liveUrl": "https://project1.demo",
+      "githubUrl": "https://github.com/na8am/project1"
+    },
+    {
+      "id": 2,
+      "name": "Task Management System",
+      "description": "A collaborative task management platform with real-time updates and team collaboration features.",
+      "technologies": ["React", "Node.js", "Socket.io", "PostgreSQL"],
+      "liveUrl": "https://project2.demo",
+      "githubUrl": "https://github.com/na8am/project2"
+    },
+    {
+      "id": 3,
+      "name": "AI Content Generator",
+      "description": "An AI-powered content generation tool using OpenAI's GPT-3 API for creating marketing copy.",
+      "technologies": ["React", "Python", "OpenAI", "FastAPI"],
+      "liveUrl": "https://project3.demo",
+      "githubUrl": "https://github.com/na8am/project3"
+    },
+    {
+      "id": 4,
+      "name": "Real-time Chat Application",
+      "description": "A real-time chat application built with React and Firebase, featuring user authentication and message storage.",
+      "technologies": ["React", "Firebase", "Tailwind CSS"],
+      "liveUrl": "https://project4.demo",
+      "githubUrl": "https://github.com/na8am/project4"
+    }
+  ],
+  "contact": {
+    "email": "na8am@example.com",
+    "phone": "+1 (555) 123-4567",
+    "location": "San Francisco, CA",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/in/na8am",
+      "github": "https://github.com/na8am",
+      "twitter": "https://twitter.com/na8am"
+    }
+  }
+}
