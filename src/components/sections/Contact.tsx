@@ -19,6 +19,7 @@ export default function Contact({ data }: ContactProps) {
 
   return (
     <motion.section
+      id="contact"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
