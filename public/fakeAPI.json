@@ -19,11 +19,42 @@
       "AWS",
       "MongoDB"
     ],
-    "experience": {
-      "years": "5+",
-      "companies": "4",
-      "projects": "25+"
-    }
+    "experience": [
+      {
+        "position": "Senior Software Engineer",
+        "company": "Tech Solutions Inc.",
+        "duration": "2021 - Present",
+        "description": "Leading development of enterprise-scale web applications using React and Node.js."
+      },
+      {
+        "position": "Full Stack Developer",
+        "company": "Digital Innovations",
+        "duration": "2019 - 2021",
+        "description": "Developed and maintained multiple client projects using modern web technologies."
+      },
+      {
+        "position": "Frontend Developer",
+        "company": "Web Creators",
+        "duration": "2018 - 2019",
+        "description": "Specialized in creating responsive and accessible web interfaces."
+      }
+    ],
+    "education": [
+      {
+        "degree": "Master of Science in Computer Science",
+        "university": "Stanford University",
+        "from": "2016",
+        "to": "2018",
+        "GPA": "3.8"
+      },
+      {
+        "degree": "Bachelor of Science in Software Engineering",
+        "university": "University of California, Berkeley",
+        "from": "2012",
+        "to": "2016",
+        "GPA": "3.9"
+      }
+    ]
   },
   "projects": [
     {
@@ -63,10 +94,12 @@
     "email": "na8am@example.com",
     "phone": "+1 (555) 123-4567",
     "location": "San Francisco, CA",
+    "whatsapp": "15551234567",
     "socialLinks": {
       "linkedin": "https://linkedin.com/in/na8am",
       "github": "https://github.com/na8am",
-      "twitter": "https://twitter.com/na8am"
+      "twitter": "https://twitter.com/na8am",
+      "dribbble": "https://dribbble.com/na8am"
     }
   }
 }
