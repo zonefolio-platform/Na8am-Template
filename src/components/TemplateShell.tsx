@@ -7,6 +7,8 @@ import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
+import Navigation from "./Navigation";
+import ScrollToTop from "./ScrollToTop";
 import fetcher from "@/libs/fetcher";
 
 // ==== Types ====
@@ -23,6 +25,10 @@ type Project = {
   id: number;
   name: string;
   description?: string;
+  image?: string;
+  technologies?: string[];
+  liveUrl?: string;
+  githubUrl?: string;
 };
 
 type ContactData = {
@@ -79,13 +85,57 @@ export default function TemplateShell() {
     );
   }
 
-  if (isError) {
-    return (
-      <div className="p-8 text-center text-red-500">
-        Failed to load data: {(error as Error).message}
-      </div>
-    );
-  }
+  // Fallback sample data when API fails
+  const fallbackData: TemplateData = {
+    hero: {
+      title: "Your Name",
+      subtitle: "Creative Professional & Problem Solver"
+    },
+    about: {
+      bio: "Passionate creative professional with expertise in delivering exceptional results across various projects and collaborations."
+    },
+    projects: [
+      {
+        id: 1,
+        name: "Featured Portfolio Project",
+        description: "A comprehensive showcase of creative work featuring modern design principles and user-centered solutions.",
+        technologies: ["Design", "Development", "Strategy", "Branding"],
+        liveUrl: "https://example.com/project1",
+        githubUrl: "https://github.com/example/project1"
+      },
+      {
+        id: 2,
+        name: "Creative Campaign",
+        description: "An innovative marketing campaign that increased engagement and delivered measurable results.",
+        technologies: ["Marketing", "Design", "Analytics"],
+        liveUrl: "https://example.com/project2",
+        githubUrl: "https://github.com/example/project2"
+      },
+      {
+        id: 3,
+        name: "Brand Identity System",
+        description: "Complete brand identity design including logo, typography, and visual guidelines.",
+        technologies: ["Branding", "Typography", "Visual Design"],
+        liveUrl: "https://example.com/project3",
+        githubUrl: "https://github.com/example/project3"
+      },
+      {
+        id: 4,
+        name: "Digital Experience",
+        description: "User-focused digital experience design with emphasis on accessibility and performance.",
+        technologies: ["UX/UI", "Accessibility", "Performance"],
+        liveUrl: "https://example.com/project4",
+        githubUrl: "https://github.com/example/project4"
+      }
+    ],
+    contact: {
+      email: "hello@example.com",
+      phone: "+1 (555) 123-4567"
+    }
+  };
+
+  // Use fallback data if API fails
+  const templateData = isError ? fallbackData : data;
 
   if (!sections.length) {
     return (
@@ -97,11 +147,28 @@ export default function TemplateShell() {
 
   return (
     <div className="">
-      {sections.includes("hero") && <Hero data={data?.hero} />}
-      {sections.includes("about") && <About data={data?.about} />}
-      {sections.includes("projects") && <Projects data={data?.projects} />}
-      {sections.includes("contact") && <Contact data={data?.contact} />}
-    
+      <Navigation sections={sections} />
+      {sections.includes("hero") && (
+        <section id="hero">
+          <Hero data={templateData?.hero} />
+        </section>
+      )}
+      {sections.includes("about") && (
+        <section id="about">
+          <About data={templateData?.about} />
+        </section>
+      )}
+      {sections.includes("projects") && (
+        <section id="projects">
+          <Projects data={templateData?.projects} />
+        </section>
+      )}
+      {sections.includes("contact") && (
+        <section id="contact">
+          <Contact data={templateData?.contact} />
+        </section>
+      )}
+      <ScrollToTop />
     </div>
   );
 }

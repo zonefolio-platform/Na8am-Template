@@ -2,6 +2,7 @@
   "hero": {
     "title": "Na8am",
     "subtitle": "Software Engineer & Full Stack Developer",
+    
     "socialLinks": [
       { "name": "GitHub", "url": "https://github.com/na8am" },
       { "name": "LinkedIn", "url": "https://linkedin.com/in/na8am" },
