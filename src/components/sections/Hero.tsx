@@ -10,8 +10,8 @@ type SocialLink = {
 
 type HeroProps = {
   data?: {
+    name: string;
     title: string;
-    subtitle: string;
     image?: string;
     socialLinks?: SocialLink[];
   };
@@ -60,7 +60,7 @@ export default function Hero({ data }: HeroProps) {
                 transition={{ delay: 0.6, duration: 0.8 }}
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] tracking-tight"
               >
-                {data.title}
+                {data.name}
               </motion.h1>
 
               <motion.p 
@@ -69,7 +69,7 @@ export default function Hero({ data }: HeroProps) {
                 transition={{ delay: 0.7, duration: 0.6 }}
                 className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed font-light max-w-2xl"
               >
-                {data.subtitle}
+                {data.title}
               </motion.p>
 
               <motion.div 
