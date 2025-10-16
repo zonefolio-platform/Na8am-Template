@@ -12,9 +12,16 @@ import ScrollToTop from "./ScrollToTop";
 import fetcher from "@/libs/fetcher";
 
 // ==== Types ====
+type SocialLink = {
+  name: string;
+  url: string;
+};
+
 type HeroData = {
+  name: string;
   title: string;
-  subtitle: string;
+  image?: string;
+  socialLinks?: SocialLink[];
 };
 
 type AboutData = {
@@ -88,8 +95,8 @@ export default function TemplateShell() {
   // Fallback sample data when API fails
   const fallbackData: TemplateData = {
     hero: {
-      title: "Your Name",
-      subtitle: "Creative Professional & Problem Solver"
+      name: "Your Name",
+      title: "Creative Professional & Problem Solver"
     },
     about: {
       bio: "Passionate creative professional with expertise in delivering exceptional results across various projects and collaborations."
