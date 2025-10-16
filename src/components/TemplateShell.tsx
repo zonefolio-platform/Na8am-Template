@@ -11,7 +11,7 @@ import Navigation from "./Navigation";
 import ScrollToTop from "./ScrollToTop";
 import fetcher from "@/libs/fetcher";
 
-// ==== Types ====
+// ==== Types =====
 type SocialLink = {
   name: string;
   url: string;
