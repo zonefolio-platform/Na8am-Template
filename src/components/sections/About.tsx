@@ -1,10 +1,11 @@
-'use client';
+"use client";
 import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
+import TruncatedText from "@/components/TruncatedText";
 type AboutProps = {
   data?: {
-    bio: string;
+    bio?: string;
     skills?: string[];
     image?: string;
     experience?: Array<{
@@ -45,7 +46,7 @@ export default function About({ data }: AboutProps) {
       {/* Background decoration */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-50 rounded-full opacity-30 blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-indigo-50 rounded-full opacity-20 blur-3xl"></div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Bio Section - Always visible if data exists */}
         {data.bio && (
@@ -57,7 +58,7 @@ export default function About({ data }: AboutProps) {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="space-y-8"
             >
-              <motion.span 
+              <motion.span
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -67,7 +68,7 @@ export default function About({ data }: AboutProps) {
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                 About Me
               </motion.span>
-              <motion.h2 
+              <motion.h2
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -76,15 +77,18 @@ export default function About({ data }: AboutProps) {
               >
                 Professional Summary
               </motion.h2>
-              <motion.p 
+              <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-lg text-gray-600 leading-relaxed font-light"
               >
-                {data.bio}
-              </motion.p>
+                <TruncatedText
+                  text={data.bio}
+                  limit={200}
+                  className="text-lg text-gray-600 leading-relaxed font-light"
+                />
+              </motion.div>
             </motion.div>
 
             {/* Profile Image */}
@@ -99,7 +103,7 @@ export default function About({ data }: AboutProps) {
                 {/* Decorative elements */}
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-100 rounded-full opacity-60"></div>
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-indigo-100 rounded-full opacity-40"></div>
-                
+
                 {data.image ? (
                   <Image
                     src={data.image}
@@ -112,8 +116,18 @@ export default function About({ data }: AboutProps) {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
                     <div className="text-center space-y-4">
                       <div className="w-24 h-24 mx-auto bg-blue-100 rounded-full flex items-center justify-center">
-                        <svg className="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        <svg
+                          className="w-12 h-12 text-blue-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                          />
                         </svg>
                       </div>
                       <p className="text-gray-500 font-medium">Profile Image</p>
@@ -135,7 +149,7 @@ export default function About({ data }: AboutProps) {
             className="mb-24"
           >
             <div className="text-center mb-12">
-              <motion.span 
+              <motion.span
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -145,7 +159,7 @@ export default function About({ data }: AboutProps) {
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                 Skills & Expertise
               </motion.span>
-              <motion.h2 
+              <motion.h2
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -184,7 +198,7 @@ export default function About({ data }: AboutProps) {
             className="mb-24"
           >
             <div className="text-center mb-12">
-              <motion.span 
+              <motion.span
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -194,7 +208,7 @@ export default function About({ data }: AboutProps) {
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 Professional Journey
               </motion.span>
-              <motion.h2 
+              <motion.h2
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -206,8 +220,8 @@ export default function About({ data }: AboutProps) {
             </div>
             <div className="space-y-8">
               {experiences.map((exp, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   initial={{ x: -30, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true }}
@@ -217,17 +231,35 @@ export default function About({ data }: AboutProps) {
                   <div className="card p-8 border-l-4 border-blue-500 hover:border-blue-600 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{exp.position}</h3>
-                        <p className="text-blue-600 font-semibold text-lg">{exp.company}</p>
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                          {exp.position}
+                        </h3>
+                        <p className="text-blue-600 font-semibold text-lg">
+                          {exp.company}
+                        </p>
                       </div>
                       <span className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 bg-gray-50 px-3 py-1 rounded-full mt-2 sm:mt-0">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
                         </svg>
                         {exp.duration}
                       </span>
                     </div>
-                    {exp.description && <p className="text-gray-600 leading-relaxed">{exp.description}</p>}
+                    {exp.description && (
+                      <p className="text-gray-600 leading-relaxed">
+                        {exp.description}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -245,7 +277,7 @@ export default function About({ data }: AboutProps) {
             className="mb-24"
           >
             <div className="text-center mb-12">
-              <motion.span 
+              <motion.span
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -255,7 +287,7 @@ export default function About({ data }: AboutProps) {
                 <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                 Academic Background
               </motion.span>
-              <motion.h2 
+              <motion.h2
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -267,7 +299,7 @@ export default function About({ data }: AboutProps) {
             </div>
             <div className="space-y-8">
               {educations.map((edu, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   initial={{ x: -30, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
@@ -278,13 +310,32 @@ export default function About({ data }: AboutProps) {
                   <div className="card p-8 border-l-4 border-purple-500 hover:border-purple-600 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">{edu.degree}</h3>
-                        <p className="text-purple-600 font-semibold text-lg">{edu.university}</p>
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
+                          {edu.degree}
+                        </h3>
+                        <p className="text-purple-600 font-semibold text-lg">
+                          {edu.university}
+                        </p>
                       </div>
                       <span className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 bg-gray-50 px-3 py-1 rounded-full mt-2 sm:mt-0">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 14l9-5-9-5-9 5 9 5z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                          />
                         </svg>
                         {formatEducationDate(edu.from, edu.to)}
                       </span>
