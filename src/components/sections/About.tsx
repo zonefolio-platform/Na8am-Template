@@ -47,10 +47,10 @@ export default function About({ data }: AboutProps) {
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-50 rounded-full opacity-30 blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-indigo-50 rounded-full opacity-20 blur-3xl"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         {/* Bio Section - Always visible if data exists */}
         {data.bio && (
-          <div className="grid lg:grid-cols-2 gap-16 mb-24">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-12 sm:mb-24">
             <motion.div
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -73,7 +73,7 @@ export default function About({ data }: AboutProps) {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
               >
                 Professional Summary
               </motion.h2>
@@ -86,7 +86,7 @@ export default function About({ data }: AboutProps) {
                 <TruncatedText
                   text={data.bio}
                   limit={200}
-                  className="text-lg text-gray-600 leading-relaxed font-light"
+                  className="text-base sm:text-lg text-gray-600 leading-relaxed font-light max-w-2xl break-all w-full"
                 />
               </motion.div>
             </motion.div>
@@ -146,7 +146,7 @@ export default function About({ data }: AboutProps) {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mb-24"
+            className="mb-12 sm:mb-24"
           >
             <div className="text-center mb-12">
               <motion.span
@@ -164,12 +164,12 @@ export default function About({ data }: AboutProps) {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-3xl sm:text-4xl font-bold text-gray-900 mt-6"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mt-6"
               >
                 Technical Proficiency
               </motion.h2>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {(data.skills ?? []).map((skill, index) => (
                 <motion.div
                   key={index}
@@ -177,7 +177,7 @@ export default function About({ data }: AboutProps) {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index, duration: 0.6 }}
-                  className="group card p-6 text-center hover:shadow-lg transition-all duration-300"
+                  className="group card p-4 sm:p-6 text-center hover:shadow-lg transition-all duration-300"
                 >
                   <span className="text-gray-700 font-semibold group-hover:text-blue-600 transition-colors">
                     {skill}
@@ -189,83 +189,129 @@ export default function About({ data }: AboutProps) {
         )}
 
         {/* Experience Section - Only visible if experiences exist */}
-        {experiences.length > 0 && (
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="mb-24"
-          >
-            <div className="text-center mb-12">
-              <motion.span
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-green-600 bg-green-50 px-4 py-2 rounded-full border border-green-100"
-              >
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                Professional Journey
-              </motion.span>
-              <motion.h2
+        {experiences.length > 0 &&
+          (() => {
+            // Check if all fields in all experiences are null
+            const allFieldsNull = experiences.every(
+              (exp) =>
+                !exp.position &&
+                !exp.company &&
+                !exp.duration &&
+                !exp.description
+            );
+
+            return (
+              <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-                className="text-3xl sm:text-4xl font-bold text-gray-900 mt-6"
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="mb-12 sm:mb-24"
               >
-                Work Experience
-              </motion.h2>
-            </div>
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ x: -30, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 * index, duration: 0.6 }}
-                  className="group relative"
-                >
-                  <div className="card p-8 border-l-4 border-blue-500 hover:border-blue-600 transition-all duration-300">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                          {exp.position}
-                        </h3>
-                        <p className="text-blue-600 font-semibold text-lg">
-                          {exp.company}
-                        </p>
-                      </div>
-                      <span className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 bg-gray-50 px-3 py-1 rounded-full mt-2 sm:mt-0">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                <div className="text-center mb-12">
+                  <motion.span
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6, duration: 0.6 }}
+                    className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-green-600 bg-green-50 px-4 py-2 rounded-full border border-green-100"
+                  >
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    Professional Journey
+                  </motion.span>
+                  <motion.h2
+                    initial={{ y: 30, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.7, duration: 0.8 }}
+                    className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mt-6"
+                  >
+                    Work Experience
+                  </motion.h2>
+                </div>
+
+                {allFieldsNull ? (
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.8, duration: 0.6 }}
+                    className="card p-8 text-center max-w-2xl mx-auto"
+                  >
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Currently building a diverse portfolio of professional
+                      experiences. Open to exciting opportunities and
+                      collaborations that drive innovation and growth.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <div className="space-y-8">
+                    {experiences.map((exp, index) => {
+                      // Check if this specific experience has at least one non-null field
+                      const hasValidData =
+                        exp.position ||
+                        exp.company ||
+                        exp.duration ||
+                        exp.description;
+
+                      if (!hasValidData) return null;
+
+                      return (
+                        <motion.div
+                          key={index}
+                          initial={{ x: -30, opacity: 0 }}
+                          whileInView={{ x: 0, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.1 * index, duration: 0.6 }}
+                          className="group relative"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                        {exp.duration}
-                      </span>
-                    </div>
-                    {exp.description && (
-                      <p className="text-gray-600 leading-relaxed">
-                        {exp.description}
-                      </p>
-                    )}
+                          <div className="card p-6 sm:p-8 border-l-4 border-blue-500 hover:border-blue-600 transition-all duration-300">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                              <div>
+                                {exp.position && (
+                                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                    {exp.position}
+                                  </h3>
+                                )}
+                                {exp.company && (
+                                  <p className="text-blue-600 font-semibold text-lg">
+                                    {exp.company}
+                                  </p>
+                                )}
+                              </div>
+                              {exp.duration && (
+                                <span className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 bg-gray-50 px-3 py-1 rounded-full mt-2 sm:mt-0">
+                                  <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    />
+                                  </svg>
+                                  {exp.duration}
+                                </span>
+                              )}
+                            </div>
+                            {exp.description && (
+                              <p className="text-gray-600 leading-relaxed">
+                                {exp.description}
+                              </p>
+                            )}
+                          </div>
+                        </motion.div>
+                      );
+                    })}
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
+                )}
+              </motion.div>
+            );
+          })()}
 
         {/* Education Section - Only visible if education exists */}
         {educations.length > 0 && (
@@ -274,7 +320,7 @@ export default function About({ data }: AboutProps) {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mb-24"
+            className="mb-12 sm:mb-24"
           >
             <div className="text-center mb-12">
               <motion.span
@@ -292,7 +338,7 @@ export default function About({ data }: AboutProps) {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="text-3xl sm:text-4xl font-bold text-gray-900 mt-6"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mt-6"
               >
                 Education
               </motion.h2>
@@ -307,7 +353,7 @@ export default function About({ data }: AboutProps) {
                   transition={{ delay: 0.1 * index, duration: 0.6 }}
                   className="group relative"
                 >
-                  <div className="card p-8 border-l-4 border-purple-500 hover:border-purple-600 transition-all duration-300">
+                  <div className="card p-6 sm:p-8 border-l-4 border-purple-500 hover:border-purple-600 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                       <div>
                         <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">

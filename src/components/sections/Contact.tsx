@@ -30,32 +30,36 @@ export default function Contact({ data }: ContactProps) {
   };
 
   const contactMethods: ContactMethod[] = [
-    {
-      type: "email",
-      label: "Email",
-      value: data.email,
-      href: `mailto:${data.email}`,
-      icon: (
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-          />
-        </svg>
-      ),
-      gradient: "from-blue-500 to-blue-600",
-      hoverColor: "hover:border-blue-200",
-      bgGradient: "from-blue-50/50",
-      shadowColor: "group-hover:shadow-blue-200",
-      textColor: "group-hover:text-blue-600",
-    },
+    ...(data.email
+      ? [
+          {
+            type: "email",
+            label: "Email",
+            value: data.email,
+            href: `mailto:${data.email}`,
+            icon: (
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            ),
+            gradient: "from-blue-500 to-blue-600",
+            hoverColor: "hover:border-blue-200",
+            bgGradient: "from-blue-50/50",
+            shadowColor: "group-hover:shadow-blue-200",
+            textColor: "group-hover:text-blue-600",
+          },
+        ]
+      : []),
     ...(data.phone
       ? [
           {
@@ -250,45 +254,46 @@ export default function Contact({ data }: ContactProps) {
         </div>
 
         {/* Social Links */}
-        {data.socialLinks && Object.keys(data.socialLinks).length > 0 && (
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.9, duration: 0.8 }}
-            className="text-center"
-          >
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">
-              Follow Me
-            </h3>
-            <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-6 flex-wrap">
-              {Object.entries(data.socialLinks).map(
-                ([platform, url], index) =>
-                  url && (
-                    <motion.a
-                      key={platform}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ y: 20, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-                      whileHover={{ y: -5, scale: 1.1 }}
-                      className="group relative px-5 py-3 sm:px-6 sm:py-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 min-w-[100px] sm:min-w-[120px]"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative">
-                        <span className="capitalize text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-900 transition-colors duration-300">
-                          {platform}
-                        </span>
-                      </div>
-                    </motion.a>
-                  )
-              )}
-            </div>
-          </motion.div>
-        )}
+        {data.socialLinks &&
+          Object.values(data.socialLinks).some((url) => !!url) && (
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="text-center"
+            >
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">
+                Follow Me
+              </h3>
+              <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-6 flex-wrap">
+                {Object.entries(data.socialLinks).map(
+                  ([platform, url], index) =>
+                    url && (
+                      <motion.a
+                        key={platform}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
+                        whileHover={{ y: -5, scale: 1.1 }}
+                        className="group relative px-5 py-3 sm:px-6 sm:py-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 min-w-[100px] sm:min-w-[120px]"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative">
+                          <span className="capitalize text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-900 transition-colors duration-300">
+                            {platform}
+                          </span>
+                        </div>
+                      </motion.a>
+                    )
+                )}
+              </div>
+            </motion.div>
+          )}
       </div>
     </motion.section>
   );
