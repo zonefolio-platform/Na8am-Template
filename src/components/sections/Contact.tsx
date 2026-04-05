@@ -1,45 +1,37 @@
 "use client";
+
 import React from "react";
 import { motion } from "motion/react";
+import { isFilled } from "@/libs/is-filled";
+import type { TemplateData } from "@/types/template";
 
 type ContactProps = {
-  data?: {
-    email: string;
-    phone?: string;
-    location?: string;
-    whatsapp?: string;
-    socialLinks?: Record<string, string>;
-  };
+  data?: TemplateData["contact"];
 };
+
+interface ContactMethod {
+  key: string;
+  label: string;
+  value: string;
+  href?: string;
+  external?: boolean;
+  icon: React.ReactNode;
+}
 
 export default function Contact({ data }: ContactProps) {
   if (!data) return null;
 
-  type ContactMethod = {
-    type: string;
-    label: string;
-    value: string;
-    href?: string;
-    icon: React.ReactNode;
-    gradient: string;
-    hoverColor: string;
-    bgGradient: string;
-    shadowColor: string;
-    textColor: string;
-    external?: boolean;
-  };
-
-  const contactMethods: ContactMethod[] = [
-    ...(data.email
+  const methods: ContactMethod[] = [
+    ...(isFilled(data.email)
       ? [
           {
-            type: "email",
+            key: "email",
             label: "Email",
-            value: data.email,
+            value: data.email!,
             href: `mailto:${data.email}`,
             icon: (
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -52,24 +44,19 @@ export default function Contact({ data }: ContactProps) {
                 />
               </svg>
             ),
-            gradient: "from-blue-500 to-blue-600",
-            hoverColor: "hover:border-blue-200",
-            bgGradient: "from-blue-50/50",
-            shadowColor: "group-hover:shadow-blue-200",
-            textColor: "group-hover:text-blue-600",
           },
         ]
       : []),
-    ...(data.phone
+    ...(isFilled(data.phone)
       ? [
           {
-            type: "phone",
+            key: "phone",
             label: "Phone",
-            value: data.phone,
+            value: data.phone!,
             href: `tel:${data.phone}`,
             icon: (
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -82,48 +69,38 @@ export default function Contact({ data }: ContactProps) {
                 />
               </svg>
             ),
-            gradient: "from-green-500 to-green-600",
-            hoverColor: "hover:border-green-200",
-            bgGradient: "from-green-50/50",
-            shadowColor: "group-hover:shadow-green-200",
-            textColor: "group-hover:text-green-600",
           },
         ]
       : []),
-    ...(data.whatsapp
+    ...(isFilled(data.whatsapp)
       ? [
           {
-            type: "whatsapp",
+            key: "whatsapp",
             label: "WhatsApp",
             value: "Message on WhatsApp",
-            href: `https://wa.me/${data.whatsapp.replace(/\D/g, "")}`,
+            href: `https://wa.me/${data.whatsapp!.replace(/\D/g, "")}`,
+            external: true,
             icon: (
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.109" />
               </svg>
             ),
-            gradient: "from-emerald-500 to-emerald-600",
-            hoverColor: "hover:border-emerald-200",
-            bgGradient: "from-emerald-50/50",
-            shadowColor: "group-hover:shadow-emerald-200",
-            textColor: "group-hover:text-emerald-600",
-            external: true,
           },
         ]
       : []),
-    ...(data.location
+    ...(isFilled(data.location)
       ? [
           {
-            type: "location",
+            key: "location",
             label: "Location",
-            value: data.location,
+            value: data.location!,
             icon: (
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -142,159 +119,142 @@ export default function Contact({ data }: ContactProps) {
                 />
               </svg>
             ),
-            gradient: "from-purple-500 to-purple-600",
-            hoverColor: "hover:border-purple-200",
-            bgGradient: "from-purple-50/50",
-            shadowColor: "group-hover:shadow-purple-200",
-            textColor: "group-hover:text-purple-600",
           },
         ]
       : []),
   ];
 
+  if (methods.length === 0) return null;
+
   return (
-    <motion.section
-      id="contact"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="relative w-full min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden"
+    <section
+      className="w-full"
+      style={{
+        background: "var(--brand-secondary)",
+        position: "relative",
+        zIndex: 1,
+        overflow: "hidden",
+      }}
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-100 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-indigo-100 rounded-full opacity-30 blur-3xl"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-purple-100 rounded-full opacity-10 blur-3xl"></div>
-      </div>
+      <div className="max-w-[960px] mx-auto px-6 lg:px-8 py-20 space-y-12">
+        {/* ── Header ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="space-y-4"
+        >
+          <span
+            className="pill-badge"
+            style={{
+              color: "var(--brand-primary)",
+              background: "rgba(58,123,255,0.12)",
+              border: "1px solid rgba(58,123,255,0.2)",
+            }}
+          >
+            <span className="pill-badge-dot" />
+            Get in touch
+          </span>
+          <h2
+            className="text-white"
+            style={{
+              fontFamily: "var(--brand-font-heading)",
+              fontWeight: 700,
+              fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+              letterSpacing: "-0.8px",
+            }}
+          >
+            Let&apos;s connect
+          </h2>
+        </motion.div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-        {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <motion.span
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-2 rounded-full border border-blue-100"
-          >
-            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-            Get in Touch
-          </motion.span>
-          <motion.h2
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mt-4 sm:mt-6"
-          >
-            Let&apos;s Connect
-          </motion.h2>
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mt-4 sm:mt-6 px-4"
-          >
-            Ready to start a conversation? I&apos;m always open to discussing
-            new opportunities, creative projects, or just having a friendly
-            chat.
-          </motion.p>
-        </div>
+        {/* ── Contact cards ── */}
+        <div className="grid sm:grid-cols-2 gap-4">
+          {methods.map((method, i) => {
+            const isLink = !!method.href;
+            const commonStyle = {
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.08)",
+            };
 
-        {/* Contact Methods Grid - Responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
-          {contactMethods.map((method, index) => {
-            const Component = method.href ? motion.a : motion.div;
-            const props = method.href
-              ? {
-                  href: method.href,
-                  ...(method.external && {
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  }),
-                }
-              : {};
+            const cardContent = (
+              <div className="flex items-center gap-4">
+                <div
+                  className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
+                  style={{ background: "var(--brand-primary)" }}
+                >
+                  {method.icon}
+                </div>
+                <div className="min-w-0">
+                  <p
+                    className="text-xs font-medium mb-0.5"
+                    style={{
+                      fontFamily: "var(--brand-font-body)",
+                      color: "rgba(255,255,255,0.45)",
+                      letterSpacing: "0.5px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {method.label}
+                  </p>
+                  <p
+                    className="text-sm font-medium truncate"
+                    style={{
+                      fontFamily: "var(--brand-font-body)",
+                      color: "rgba(255,255,255,0.85)",
+                    }}
+                  >
+                    {method.value}
+                  </p>
+                </div>
+              </div>
+            );
 
             return (
-              <Component
-                key={method.type}
-                {...props}
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
+              <motion.div
+                key={method.key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className={`group relative p-6 sm:p-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 ${method.hoverColor} hover:shadow-xl transition-all duration-300 min-h-[140px] flex items-center`}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${method.bgGradient} to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                ></div>
-                <div className="relative flex items-center gap-4 sm:gap-6 w-full">
-                  <div
-                    className={`flex-shrink-0 p-3 sm:p-4 bg-gradient-to-br ${method.gradient} rounded-xl shadow-lg ${method.shadowColor} transition-shadow duration-300`}
+                {isLink ? (
+                  <a
+                    href={method.href}
+                    {...(method.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="flex items-center p-5 rounded-[14px] transition-all duration-200"
+                    style={commonStyle}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background =
+                        "rgba(255,255,255,0.08)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(58,123,255,0.4)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background =
+                        "rgba(255,255,255,0.05)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(255,255,255,0.08)";
+                    }}
                   >
-                    {method.icon}
+                    {cardContent}
+                  </a>
+                ) : (
+                  <div
+                    className="flex items-center p-5 rounded-[14px]"
+                    style={commonStyle}
+                  >
+                    {cardContent}
                   </div>
-                  <div className="text-left min-w-0 flex-1">
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
-                      {method.label}
-                    </h3>
-                    <p
-                      className={`text-sm sm:text-base text-gray-600 ${method.textColor} transition-colors duration-300 truncate`}
-                    >
-                      {method.value}
-                    </p>
-                  </div>
-                </div>
-              </Component>
+                )}
+              </motion.div>
             );
           })}
         </div>
-
-        {/* Social Links */}
-        {data.socialLinks &&
-          Object.values(data.socialLinks).some((url) => !!url) && (
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.9, duration: 0.8 }}
-              className="text-center"
-            >
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">
-                Follow Me
-              </h3>
-              <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-6 flex-wrap">
-                {Object.entries(data.socialLinks).map(
-                  ([platform, url], index) =>
-                    url && (
-                      <motion.a
-                        key={platform}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-                        whileHover={{ y: -5, scale: 1.1 }}
-                        className="group relative px-5 py-3 sm:px-6 sm:py-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 min-w-[100px] sm:min-w-[120px]"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative">
-                          <span className="capitalize text-sm sm:text-base text-gray-700 font-medium group-hover:text-gray-900 transition-colors duration-300">
-                            {platform}
-                          </span>
-                        </div>
-                      </motion.a>
-                    )
-                )}
-              </div>
-            </motion.div>
-          )}
       </div>
-    </motion.section>
+    </section>
   );
 }
