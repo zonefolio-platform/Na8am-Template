@@ -1,7 +1,6 @@
 // src/components/sections/Hero.tsx
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -182,8 +181,10 @@ export default function Hero({ data }: HeroProps) {
                   src={data.image!}
                   alt={data.name ?? "Profile photo"}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 400px"
                   className="object-cover"
                   priority
+                  loading="eager"
                 />
               </div>
             </motion.div>

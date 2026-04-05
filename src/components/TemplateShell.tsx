@@ -1,66 +1,45 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "motion/react";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Navigation from "./Navigation";
-import ScrollToTop from "./ScrollToTop";
-import type { TemplateData } from "@/libs/server-fetcher";
+import { isFilled } from "@/libs/is-filled";
+import type { TemplateData } from "@/types/template";
 
 type TemplateShellProps = {
   data: TemplateData;
 };
 
-// Fallback data when no data is provided
 const fallbackData: TemplateData = {
   hero: {
     name: "Your Name",
-    title: "Creative Professional & Problem Solver",
+    title: "Creative Professional",
   },
   about: {
-    bio: "Passionate creative professional with expertise in delivering exceptional results across various projects and collaborations.",
+    bio: "Passionate professional with expertise in delivering exceptional results.",
   },
-  projects: [
-    {
-      id: 1,
-      name: "Featured Portfolio Project",
-      description:
-        "A comprehensive showcase of creative work featuring modern design principles and user-centered solutions.",
-      technologies: ["Design", "Development", "Strategy", "Branding"],
-      liveUrl: "https://example.com/project1",
-      githubUrl: "https://github.com/example/project1",
-    },
-    {
-      id: 2,
-      name: "Creative Campaign",
-      description:
-        "An innovative marketing campaign that increased engagement and delivered measurable results.",
-      technologies: ["Marketing", "Design", "Analytics"],
-      liveUrl: "https://example.com/project2",
-      githubUrl: "https://github.com/example/project2",
-    },
-    {
-      id: 3,
-      name: "Brand Identity System",
-      description:
-        "Complete brand identity design including logo, typography, and visual guidelines.",
-      technologies: ["Branding", "Typography", "Visual Design"],
-      liveUrl: "https://example.com/project3",
-      githubUrl: "https://github.com/example/project3",
-    },
-    {
-      id: 4,
-      name: "Digital Experience",
-      description:
-        "User-focused digital experience design with emphasis on accessibility and performance.",
-      technologies: ["UX/UI", "Accessibility", "Performance"],
-      liveUrl: "https://example.com/project4",
-      githubUrl: "https://github.com/example/project4",
-    },
-  ],
+  projects: {
+    projects: [
+      {
+        name: "Featured Portfolio Project",
+        description:
+          "A comprehensive showcase of creative work featuring modern design principles.",
+        technologies: ["Design", "Development", "Strategy"],
+        liveUrl: "https://example.com/project1",
+        githubUrl: "https://github.com/example/project1",
+      },
+      {
+        name: "Creative Campaign",
+        description:
+          "An innovative campaign that increased engagement and delivered measurable results.",
+        technologies: ["Marketing", "Design", "Analytics"],
+        liveUrl: "https://example.com/project2",
+        githubUrl: "https://github.com/example/project2",
+      },
+    ],
+  },
   contact: {
     email: "hello@example.com",
     phone: "+1 (555) 123-4567",
@@ -68,56 +47,96 @@ const fallbackData: TemplateData = {
 };
 
 export default function TemplateShell({ data }: TemplateShellProps) {
-  const [sections, setSections] = useState<string[]>([]);
-
-  // Parse sections once on mount
-  useEffect(() => {
-    try {
-      const raw = process.env.NEXT_PUBLIC_SECTIONS;
-      const arr = raw
-        ? JSON.parse(raw)
-        : ["hero", "about", "projects", "contact"];
-      setSections(arr);
-    } catch {
-      setSections(["hero", "about", "projects", "contact"]);
-    }
-  }, []);
-
-  // Use provided data or fallback
   const templateData = Object.keys(data).length > 0 ? data : fallbackData;
 
-  if (!sections.length) {
-    return (
-      <div className="p-8 text-center text-gray-500">
-        No sections configured.
-      </div>
-    );
-  }
+  // Section visibility — only render sections that have data
+  const showHero =
+    isFilled(templateData.hero?.name) || isFilled(templateData.hero?.title);
+  const showAbout =
+    isFilled(templateData.about?.bio) ||
+    (templateData.about?.skills ?? []).filter(isFilled).length > 0 ||
+    (templateData.about?.experience ?? []).length > 0 ||
+    (templateData.about?.education ?? []).length > 0;
+  const showProjects =
+    (templateData.projects?.projects ?? []).filter((p) =>
+      isFilled(p.name)
+    ).length > 0;
+  const showContact =
+    isFilled(templateData.contact?.email) ||
+    isFilled(templateData.contact?.phone) ||
+    isFilled(templateData.contact?.whatsapp) ||
+    isFilled(templateData.contact?.location);
+
+  // Only include sections that have data for the nav
+  const sections = [
+    showHero && "hero",
+    showAbout && "about",
+    showProjects && "projects",
+    showContact && "contact",
+  ].filter(Boolean) as string[];
 
   return (
-    <div className="">
-      <Navigation sections={sections} />
-      {sections.includes("hero") && (
+    <div>
+      <Navigation
+        sections={sections}
+        heroName={templateData.hero?.name}
+      />
+
+      {showHero && (
         <section id="hero">
-          <Hero data={templateData?.hero} />
+          <Hero data={templateData.hero} />
         </section>
       )}
-      {sections.includes("about") && (
+
+      {showAbout && (
         <section id="about">
-          <About data={templateData?.about} />
+          <About data={templateData.about} />
         </section>
       )}
-      {sections.includes("projects") && (
+
+      {showProjects && (
         <section id="projects">
-          <Projects data={templateData?.projects} />
+          <Projects data={templateData.projects} />
         </section>
       )}
-      {sections.includes("contact") && (
+
+      {showContact && (
         <section id="contact">
-          <Contact data={templateData?.contact} />
+          <Contact data={templateData.contact} />
         </section>
       )}
-      <ScrollToTop />
+
+      {/* ZoneFolio badge — always visible on free tier */}
+      <a
+        href="https://zonefolio.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Made with ZoneFolio"
+        className="fixed z-50 flex items-center gap-3 px-4 py-3 rounded-full transition-opacity duration-200 hover:opacity-80"
+        style={{
+          bottom: "24px",
+          right: "24px",
+          background: "var(--brand-secondary)",
+          boxShadow: "0 4px 20px rgba(13,17,23,0.35)",
+        }}
+      >
+        <span
+          className="flex items-center justify-center w-9 h-9 text-white text-sm font-extrabold rounded-xl"
+          style={{
+            background: "var(--brand-primary)",
+            fontFamily: "var(--brand-font-heading)",
+            letterSpacing: "-0.5px",
+          }}
+        >
+          Zf
+        </span>
+        <span
+          className="text-white text-sm font-medium pr-1"
+          style={{ fontFamily: "var(--brand-font-body)" }}
+        >
+          Made with ZoneFolio
+        </span>
+      </a>
     </div>
   );
 }

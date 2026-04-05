@@ -1,107 +1,95 @@
 {
   "hero": {
     "name": "Na8am",
-    "title": "Software Engineer & Full Stack Developer",
-    
+    "title": "Software Engineer & Full-Stack Developer",
+    "image": "https://res.cloudinary.com/dsy0j0gh0/image/upload/v1775427835/ZF_uafpay.png",
     "socialLinks": [
-      { "name": "GitHub", "url": "https://github.com/na8am" },
-      { "name": "LinkedIn", "url": "https://linkedin.com/in/na8am" },
-      { "name": "Twitter", "url": "https://twitter.com/na8am" },
-      { "name": "Dribbble", "url": "https://dribbble.com/na8am" }
+      { "platform": "GitHub", "url": "https://github.com/na8am" },
+      { "platform": "LinkedIn", "url": "https://linkedin.com/in/na8am" },
+      { "platform": "Twitter", "url": "https://twitter.com/na8am" }
     ]
   },
   "about": {
-    "bio": "Passionate software engineer with a knack for building scalable web applications. With over 5 years of experience in full-stack development, I specialize in creating efficient, user-friendly solutions that solve real-world problems.",
-    "skills": [
-      "React.js ",
-      "Node.js",
-      "TypeScript",
-      "Next.js",
-      "GraphQL",
-      "AWS",
-      "MongoDB"
-    ],
+    "bio": "Passionate software engineer with 5+ years building scalable web applications. I specialize in full-stack development and enjoy turning complex problems into clean, efficient solutions.",
+    "image": "https://res.cloudinary.com/dsy0j0gh0/image/upload/v1775427835/ZF_uafpay.png",
+    "skills": ["React", "Next.js", "Node.js", "TypeScript", "GraphQL", "PostgreSQL", "AWS", "MongoDB"],
     "experience": [
       {
         "position": "Senior Software Engineer",
         "company": "Tech Solutions Inc.",
-        "duration": "2021 - Present",
-        "description": "Leading development of enterprise-scale web applications using React and Node.js."
+        "duration": "2021 – Present",
+        "description": "Leading development of enterprise-scale web applications using React and Node.js. Architected a microservices migration that reduced latency by 35%."
       },
       {
-        "position": "Full Stack Developer",
+        "position": "Full-Stack Developer",
         "company": "Digital Innovations",
-        "duration": "2019 - 2021",
-        "description": "Developed and maintained multiple client projects using modern web technologies."
+        "duration": "2019 – 2021",
+        "description": "Developed and maintained multiple client projects using modern web technologies. Delivered 20+ features across a SaaS platform with 10,000+ active users."
       },
       {
         "position": "Frontend Developer",
         "company": "Web Creators",
-        "duration": "2018 - 2019",
-        "description": "Specialized in creating responsive and accessible web interfaces."
+        "duration": "2018 – 2019",
+        "description": "Specialized in building responsive, accessible web interfaces. Improved Core Web Vitals scores by 40% across all client sites."
       }
     ],
     "education": [
       {
-        "degree": "Master of Science in Computer Science",
+        "degree": "M.Sc. Computer Science",
         "university": "Stanford University",
         "from": "2016",
         "to": "2018",
-        "GPA": "3.8"
+        "GPA": "3.8 / 4.0"
       },
       {
-        "degree": "Bachelor of Science in Software Engineering",
+        "degree": "B.Sc. Software Engineering",
         "university": "University of California, Berkeley",
         "from": "2012",
         "to": "2016",
-        "GPA": "3.9"
+        "GPA": "3.9 / 4.0"
       }
     ]
   },
-  "projects": [
-    {
-      "id": 1,
-      "name": "E-Commerce Platform",
-      "description": "A full-stack e-commerce solution built with Next.js, featuring real-time inventory management and payment processing.",
-      "technologies": ["Next.js", "TypeScript", "Stripe", "MongoDB"],
-      "liveUrl": "https://project1.demo",
-      "githubUrl": "https://github.com/na8am/project1"
-    },
-    {
-      "id": 2,
-      "name": "Task Management System",
-      "description": "A collaborative task management platform with real-time updates and team collaboration features.",
-      "technologies": ["React", "Node.js", "Socket.io", "PostgreSQL"],
-      "liveUrl": "https://project2.demo",
-      "githubUrl": "https://github.com/na8am/project2"
-    },
-    {
-      "id": 3,
-      "name": "AI Content Generator",
-      "description": "An AI-powered content generation tool using OpenAI's GPT-3 API for creating marketing copy.",
-      "technologies": ["React", "Python", "OpenAI", "FastAPI"],
-      "liveUrl": "https://project3.demo",
-      "githubUrl": "https://github.com/na8am/project3"
-    },
-    {
-      "id": 4,
-      "name": "Real-time Chat Application",
-      "description": "A real-time chat application built with React and Firebase, featuring user authentication and message storage.",
-      "technologies": ["React", "Firebase", "Tailwind CSS"],
-      "liveUrl": "https://project4.demo",
-      "githubUrl": "https://github.com/na8am/project4"
-    }
-  ],
+  "projects": {
+    "projects": [
+      {
+        "name": "E-Commerce Platform",
+        "description": "Full-stack e-commerce solution with real-time inventory management, payment processing, and a headless CMS for product content.",
+        "image": "https://res.cloudinary.com/dsy0j0gh0/image/upload/v1775427835/ZF_uafpay.png",
+        "technologies": ["Next.js", "TypeScript", "Stripe", "MongoDB"],
+        "liveUrl": "https://project1.demo",
+        "githubUrl": "https://github.com/na8am/ecommerce-platform"
+      },
+      {
+        "name": "Task Management System",
+        "description": "Collaborative task management platform with real-time updates, role-based access control, and team workspaces.",
+        "image": "https://res.cloudinary.com/dsy0j0gh0/image/upload/v1775427835/ZF_uafpay.png",
+        "technologies": ["React", "Node.js", "Socket.io", "PostgreSQL"],
+        "liveUrl": "https://project2.demo",
+        "githubUrl": "https://github.com/na8am/task-manager"
+      },
+      {
+        "name": "AI Content Generator",
+        "description": "AI-powered content generation tool using GPT-4 to produce marketing copy, blog drafts, and product descriptions at scale.",
+        "image": "",
+        "technologies": ["React", "Python", "OpenAI", "FastAPI"],
+        "liveUrl": "https://project3.demo",
+        "githubUrl": "https://github.com/na8am/ai-content"
+      },
+      {
+        "name": "Real-time Chat App",
+        "description": "End-to-end encrypted chat application with user authentication, file sharing, and persistent message history.",
+        "image": "",
+        "technologies": ["React", "Firebase", "TailwindCSS"],
+        "liveUrl": "https://project4.demo",
+        "githubUrl": "https://github.com/na8am/chat-app"
+      }
+    ]
+  },
   "contact": {
     "email": "na8am@example.com",
     "phone": "+1 (555) 123-4567",
     "location": "San Francisco, CA",
-    "whatsapp": "15551234567",
-    "socialLinks": {
-      "linkedin": "https://linkedin.com/in/na8am",
-      "github": "https://github.com/na8am",
-      "twitter": "https://twitter.com/na8am",
-      "dribbble": "https://dribbble.com/na8am"
-    }
+    "whatsapp": "15551234567"
   }
 }

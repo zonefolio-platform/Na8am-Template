@@ -1,7 +1,6 @@
 // src/components/sections/Projects.tsx
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import TruncatedText from "@/components/TruncatedText";
@@ -56,8 +55,9 @@ export default function Projects({ data }: ProjectsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="bg-white p-8 lg:p-10"
+          className="p-8 lg:p-10"
           style={{
+            background: "var(--brand-surface)",
             borderRadius: "14px",
             border: "1px solid var(--brand-border)",
           }}
@@ -100,15 +100,15 @@ export default function Projects({ data }: ProjectsProps) {
               )}
               {isFilled(featured.technologies) && (
                 <div className="flex flex-wrap gap-2">
-                  {featured.technologies!.filter(isFilled).map((tech, i) => (
+                  {featured.technologies!.filter(isFilled).map((tech) => (
                     <span
-                      key={i}
+                      key={tech}
                       className="px-3 py-1 text-sm rounded-full"
                       style={{
                         fontFamily: "var(--brand-font-body)",
                         color: "var(--brand-primary)",
-                        background: "rgba(58,123,255,0.06)",
-                        border: "1px solid rgba(58,123,255,0.3)",
+                        background: "var(--brand-primary-subtle)",
+                        border: "1px solid var(--brand-primary-border-subtle)",
                       }}
                     >
                       {tech}
@@ -122,18 +122,8 @@ export default function Projects({ data }: ProjectsProps) {
                     href={featured.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-white transition-all duration-200"
-                    style={{
-                      background: "var(--brand-primary)",
-                      fontFamily: "var(--brand-font-body)",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.background =
-                        "var(--brand-primary-dark)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.background = "var(--brand-primary)")
-                    }
+                    className="btn-cta-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium text-white transition-colors duration-200"
+                    style={{ fontFamily: "var(--brand-font-body)" }}
                   >
                     <svg
                       className="w-4 h-4"
@@ -156,19 +146,12 @@ export default function Projects({ data }: ProjectsProps) {
                     href={featured.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
+                    className="btn-cta-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors duration-200"
                     style={{
                       fontFamily: "var(--brand-font-body)",
                       color: "var(--brand-text-primary)",
                       border: "1px solid var(--brand-border-mid)",
                     }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.borderColor = "var(--brand-primary)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.borderColor =
-                        "var(--brand-border-mid)")
-                    }
                   >
                     <svg
                       className="w-4 h-4"
@@ -194,8 +177,10 @@ export default function Projects({ data }: ProjectsProps) {
                     src={featured.image!}
                     alt={featured.name}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
                     className="object-cover"
                     priority
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -215,13 +200,14 @@ export default function Projects({ data }: ProjectsProps) {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((project, i) => (
                 <motion.article
-                  key={i}
+                  key={project.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.6 }}
-                  className="bg-white flex flex-col overflow-hidden"
+                  className="flex flex-col overflow-hidden"
                   style={{
+                    background: "var(--brand-surface)",
                     borderRadius: "14px",
                     border: "1px solid var(--brand-border)",
                   }}
@@ -233,6 +219,7 @@ export default function Projects({ data }: ProjectsProps) {
                         src={project.image!}
                         alt={project.name}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover"
                       />
                     </div>
@@ -293,19 +280,8 @@ export default function Projects({ data }: ProjectsProps) {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-white transition-colors duration-200"
-                            style={{
-                              background: "var(--brand-primary)",
-                              fontFamily: "var(--brand-font-body)",
-                            }}
-                            onMouseEnter={(e) =>
-                              (e.currentTarget.style.background =
-                                "var(--brand-primary-dark)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.currentTarget.style.background =
-                                "var(--brand-primary)")
-                            }
+                            className="btn-cta-primary flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-white transition-colors duration-200"
+                            style={{ fontFamily: "var(--brand-font-body)" }}
                           >
                             View
                           </a>
@@ -315,20 +291,12 @@ export default function Projects({ data }: ProjectsProps) {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-200"
+                            className="btn-cta-ghost flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-200"
                             style={{
                               fontFamily: "var(--brand-font-body)",
                               color: "var(--brand-text-primary)",
                               border: "1px solid var(--brand-border-mid)",
                             }}
-                            onMouseEnter={(e) =>
-                              (e.currentTarget.style.borderColor =
-                                "var(--brand-primary)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.currentTarget.style.borderColor =
-                                "var(--brand-border-mid)")
-                            }
                           >
                             Code
                           </a>

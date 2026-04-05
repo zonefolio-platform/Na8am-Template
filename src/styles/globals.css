@@ -21,6 +21,16 @@
   --brand-font-heading: var(--font-syne), sans-serif;
   --brand-font-body: var(--font-dm-sans), sans-serif;
 
+  /* Primary alpha variants (for skill tags, tech pills) */
+  --brand-primary-subtle: rgba(58, 123, 255, 0.06);
+  --brand-primary-border-subtle: rgba(58, 123, 255, 0.3);
+
+  /* Contact card dark surface */
+  --contact-card-bg: rgba(255, 255, 255, 0.05);
+  --contact-card-bg-hover: rgba(255, 255, 255, 0.08);
+  --contact-card-border: rgba(255, 255, 255, 0.08);
+  --contact-card-border-hover: rgba(58, 123, 255, 0.4);
+
   /* Spacing */
   --space-xs: 4px;
   --space-sm: 8px;
@@ -140,6 +150,29 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ── CTA button hover states ── */
+.btn-cta-primary {
+  background: var(--brand-primary);
+}
+.btn-cta-primary:hover {
+  background: var(--brand-primary-dark);
+}
+.btn-cta-ghost:hover {
+  border-color: var(--brand-primary);
+}
+
+/* ── Contact card link hover ── */
+.contact-card-link {
+  background: var(--contact-card-bg);
+  border: 1px solid var(--contact-card-border);
+  border-radius: 14px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.contact-card-link:hover {
+  background: var(--contact-card-bg-hover);
+  border-color: var(--contact-card-border-hover);
 }
 
 /* ── Text selection ── */

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { isFilled } from "@/libs/is-filled";
 import type { TemplateData } from "@/types/template";
@@ -15,7 +15,7 @@ interface ContactMethod {
   value: string;
   href?: string;
   external?: boolean;
-  icon: React.ReactNode;
+  icon: ReactNode;
 }
 
 export default function Contact({ data }: ContactProps) {
@@ -225,20 +225,7 @@ export default function Contact({ data }: ContactProps) {
                     {...(method.external
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="flex items-center p-5 rounded-[14px] transition-all duration-200"
-                    style={commonStyle}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background =
-                        "rgba(255,255,255,0.08)";
-                      e.currentTarget.style.borderColor =
-                        "rgba(58,123,255,0.4)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background =
-                        "rgba(255,255,255,0.05)";
-                      e.currentTarget.style.borderColor =
-                        "rgba(255,255,255,0.08)";
-                    }}
+                    className="contact-card-link flex items-center p-5"
                   >
                     {cardContent}
                   </a>

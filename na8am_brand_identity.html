@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Na8am · نغم — Brand Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:         #0D1117;
+    --ink-soft:    #1C2333;
+    --blue:        #3A7BFF;
+    --blue-dark:   #1A5FE0;
+    --blue-light:  #F0F5FF;
+    --blue-mid:    #C8D9FF;
+    --gray:        #6B7280;
+    --gray-light:  #F3F4F6;
+    --border:      rgba(13,17,23,0.08);
+    --border-mid:  rgba(13,17,23,0.14);
+    --white:       #FFFFFF;
+    --surface:     #FAFBFF;
+    --green:       #22C55E;
+    --red:         #EF4444;
+    --font-d:      'Syne', sans-serif;
+    --font-b:      'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--surface);
+    font-family: var(--font-b);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--ink);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ph-logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .ph-zf {
+    width: 30px;
+    height: 30px;
+    background: var(--blue);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .ph-name {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .ph-doc-title {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+  .ph-badge {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(58,123,255,0.12);
+    border: 1px solid rgba(58,123,255,0.25);
+    border-radius: 20px;
+    padding: 3px 10px;
+  }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    background: var(--ink);
+    padding: 72px 48px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-orb-1 {
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 360px; height: 360px;
+    background: var(--blue);
+    border-radius: 50%;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+  .hero-orb-2 {
+    position: absolute;
+    bottom: -60px; left: 25%;
+    width: 220px; height: 220px;
+    background: var(--blue);
+    border-radius: 50%;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(58,123,255,0.12);
+    border: 1px solid rgba(58,123,255,0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 28px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+  .hero-title {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 64px;
+    color: #fff;
+    letter-spacing: -2.5px;
+    line-height: 1.0;
+    margin-bottom: 6px;
+  }
+  .hero-title-ar {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--blue);
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+    direction: rtl;
+  }
+  .hero-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hero-meta-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+  .hero-meta-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+  }
+  .hero-meta-div {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* ── LAYOUT ── */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 56px 0 0;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--blue);
+  }
+  .section-title {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.6px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gray);
+    max-width: 500px;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 56px 0 0;
+  }
+
+  /* ── CONCEPT CARD ── */
+  .concept-card {
+    background: var(--blue-light);
+    border: 1px solid var(--blue-mid);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .concept-item {}
+  .concept-item-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+  }
+  .concept-item-text {
+    font-size: 13px;
+    color: #1C2B4A;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+  .concept-meaning {
+    font-family: var(--font-d);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--blue);
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+    direction: rtl;
+    text-align: right;
+  }
+  .concept-meaning-en {
+    font-size: 13px;
+    color: var(--blue-dark);
+    font-weight: 300;
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  .swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.15s;
+  }
+  .swatch:hover { transform: translateY(-2px); }
+  .sw-color {
+    height: 72px;
+  }
+  .sw-info {
+    padding: 10px 12px;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+  }
+  .sw-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .sw-hex {
+    font-size: 11px;
+    color: var(--gray);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.3px;
+  }
+  .sw-role {
+    font-size: 10px;
+    color: var(--gray);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+  .sw-main {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+  .sw-usage-badge {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+
+  /* ── TYPE SYSTEM ── */
+  .type-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .type-meta {
+    min-width: 110px;
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.6;
+    flex-shrink: 0;
+  }
+  .type-meta strong {
+    display: block;
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+  .t-display {
+    font-family: var(--font-d);
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .t-display span { color: var(--blue); }
+  .t-h1 {
+    font-family: var(--font-d);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    color: var(--ink);
+  }
+  .t-h2 {
+    font-family: var(--font-d);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+  }
+  .t-body {
+    font-family: var(--font-b);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 400px;
+  }
+  .t-label {
+    font-family: var(--font-b);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .t-caption {
+    font-family: var(--font-b);
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  /* ── LOGO VARIANTS ── */
+  .logo-variants {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .lv {
+    border-radius: 14px;
+    padding: 36px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid var(--border);
+    transition: transform 0.15s;
+  }
+  .lv:hover { transform: translateY(-2px); }
+  .lv-dark { background: var(--ink); }
+  .lv-light { background: var(--white); }
+  .lv-accent { background: var(--blue); }
+  .lv-icon {
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+  .lv-name {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.3px;
+  }
+  .lv-dark .lv-icon { background: var(--blue); color: #fff; }
+  .lv-dark .lv-name { color: #fff; }
+  .lv-light .lv-icon { background: var(--ink); color: #fff; }
+  .lv-light .lv-name { color: var(--ink); }
+  .lv-accent .lv-icon { background: rgba(255,255,255,0.2); color: #fff; }
+  .lv-accent .lv-name { color: #fff; }
+  .lv-label {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--gray);
+    font-weight: 300;
+  }
+  .lv-wrapper {}
+
+  /* ── BADGE PILLS (template UI elements) ── */
+  .pills-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .pill-demo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(58,123,255,0.3);
+    background: rgba(58,123,255,0.06);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .pill-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTIONS GRID ── */
+  .sections-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .sec-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+  .sec-card:hover { border-color: var(--blue-mid); }
+  .sec-tier {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    border: 1px solid var(--blue-mid);
+  }
+  .sec-name {
+    font-family: var(--font-d);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.2px;
+    margin-bottom: 6px;
+  }
+  .sec-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .sec-elements {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .sec-tag {
+    font-size: 10px;
+    color: var(--blue-dark);
+    background: var(--blue-light);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-weight: 400;
+  }
+
+  /* ── VOICE ── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .voice-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .voice-card.do { border-top: 3px solid var(--green); }
+  .voice-card.dont { border-top: 3px solid var(--red); }
+  .vc-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .do .vc-label { color: #16A34A; }
+  .dont .vc-label { color: #DC2626; }
+  .vc-item {
+    font-size: 12px;
+    color: var(--ink);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .vc-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .do .vc-item::before { content: '✓'; color: #16A34A; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+  .dont .vc-item::before { content: '✗'; color: #DC2626; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── COMPONENT ANATOMY ── */
+  .anatomy-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .anatomy-preview {
+    background: var(--blue-light);
+    padding: 32px 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .preview-nav {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+    box-shadow: 0 1px 8px rgba(13,17,23,0.06);
+  }
+  .pn-logo {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .pn-links {
+    display: flex;
+    gap: 20px;
+  }
+  .pn-link {
+    font-size: 12px;
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: 400;
+  }
+  .pn-link.active { color: var(--blue); border-bottom: 2px solid var(--blue); padding-bottom: 1px; }
+  .preview-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .ph-left {}
+  .ph-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(58,123,255,0.3);
+    background: rgba(58,123,255,0.06);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .ph-name {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 32px;
+    color: var(--ink);
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .ph-title {
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: 300;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .ph-btns {
+    display: flex;
+    gap: 8px;
+  }
+  .ph-btn-primary {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--font-b);
+    cursor: pointer;
+  }
+  .ph-btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border-mid);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: var(--font-b);
+    cursor: pointer;
+  }
+  .ph-right {}
+  .ph-img-card {
+    background: var(--blue-light);
+    border-radius: 14px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--blue-mid);
+    gap: 6px;
+  }
+  .ph-img-icon {
+    width: 40px; height: 40px;
+    background: var(--blue-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ph-img-label { font-size: 11px; color: var(--gray); }
+  .anatomy-notes {
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .anatomy-note {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .an-num {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--blue);
+  }
+  .an-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .an-desc {
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ── FIX LIST ── */
+  .fix-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .fix-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .fix-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .fix-num {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--blue);
+    background: var(--blue-light);
+    border: 1px solid var(--blue-mid);
+    border-radius: 20px;
+    padding: 2px 9px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+  .fix-content {}
+  .fix-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .fix-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+  .fix-priority {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: auto;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  .priority-high { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+  .priority-med  { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
+  .priority-low  { background: var(--blue-light); color: var(--blue-dark); border: 1px solid var(--blue-mid); }
+
+  /* ── ZF BADGE SPEC ── */
+  .badge-spec {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .bs-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    flex: 1;
+    min-width: 180px;
+  }
+  .bs-preview {
+    margin-bottom: 14px;
+  }
+  .bs-badge-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 5px 12px 5px 6px;
+  }
+  .bs-badge-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    border: 1px solid var(--border-mid);
+    border-radius: 20px;
+    padding: 5px 12px 5px 6px;
+  }
+  .bs-zf {
+    width: 22px; height: 22px;
+    background: var(--blue);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 11px;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .bs-text-w {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    font-family: var(--font-b);
+  }
+  .bs-text-d {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--gray);
+    font-family: var(--font-b);
+  }
+  .bs-label {
+    font-size: 11px;
+    color: var(--gray);
+    margin-bottom: 4px;
+    font-weight: 300;
+  }
+  .bs-placement {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    background: var(--ink);
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pf-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pf-zf {
+    width: 26px; height: 26px;
+    background: var(--blue);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .pf-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+  }
+  .pf-right {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * {
+    animation: fadeUp 0.5s ease both;
+  }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.12s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.18s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.24s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.3s; }
+
+  @media (max-width: 700px) {
+    .hero { padding: 48px 24px; }
+    .hero-title { font-size: 40px; }
+    .content { padding: 0 24px 60px; }
+    .page-header { padding: 0 24px; }
+    .palette-grid { grid-template-columns: repeat(3, 1fr); }
+    .logo-variants, .voice-grid, .sections-grid, .anatomy-notes { grid-template-columns: 1fr; }
+    .preview-hero { grid-template-columns: 1fr; }
+    .concept-card { grid-template-columns: 1fr; gap: 20px; }
+    .page-footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    .ph-doc-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="ph-logo">
+    <div class="ph-zf">Zf</div>
+    <span class="ph-name">ZoneFolio</span>
+  </div>
+  <span class="ph-doc-title">Brand Identity Document — Na8am Template</span>
+  <span class="ph-badge">Free tier</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Brand Identity Document</div>
+    <h1 class="hero-title">Na8am</h1>
+    <p class="hero-title-ar">نغم — melody</p>
+    <p class="hero-desc">The brand identity spec for ZoneFolio's free portfolio template. Covers color, typography, logo usage, section anatomy, voice, and open fixes.</p>
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Template tier</span>
+        <span class="hero-meta-value">Free</span>
+      </div>
+      <div class="hero-meta-div"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Accent</span>
+        <span class="hero-meta-value">#3A7BFF — Sky Blue</span>
+      </div>
+      <div class="hero-meta-div"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Typefaces</span>
+        <span class="hero-meta-value">Syne 800 + DM Sans</span>
+      </div>
+      <div class="hero-meta-div"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Layout</span>
+        <span class="hero-meta-value">Single page · 4 sections</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content">
+
+  <!-- CONCEPT -->
+  <section class="section">
+    <p class="section-label">01 · Identity concept</p>
+    <h2 class="section-title">The concept</h2>
+    <p class="section-sub">Why this name, and what it means for every design decision.</p>
+    <div class="concept-card">
+      <div class="concept-item">
+        <div class="concept-meaning">نغم</div>
+        <div class="concept-meaning-en">Na8am — "melody" in Arabic</div>
+      </div>
+      <div class="concept-item">
+        <p class="concept-item-label">Design direction</p>
+        <p class="concept-item-text">Na8am carries lightness, rhythm, and personal expression. The template reflects this: soft blues, clean whites, and an airy layout that feels like a portfolio with a voice — not just a résumé. It pairs universal clean design with a subtle Arabic-world personality.</p>
+      </div>
+      <div class="concept-item">
+        <p class="concept-item-label">Target user</p>
+        <p class="concept-item-text">Developers, designers, and freelancers who want a portfolio that looks professional without looking like a theme. People who care about their online presence but don't want to spend a week building it.</p>
+      </div>
+      <div class="concept-item">
+        <p class="concept-item-label">Visual personality</p>
+        <p class="concept-item-text">Airy. Trustworthy. Modern without being cold. The sky blue accent creates energy without aggression. The ink-on-white type hierarchy is confident and readable at every viewport.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- COLORS -->
+  <section class="section">
+    <p class="section-label">02 · Color system</p>
+    <h2 class="section-title">Color palette</h2>
+    <p class="section-sub">Sky blue as the main accent, deep ink for type, cloud white for backgrounds — accessible, professional, and distinct from ZoneFolio's platform blue.</p>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="sw-color" style="background:#0D1117;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Deep Ink</span><span class="sw-usage-badge">Primary</span></div>
+          <div class="sw-hex">#0D1117</div>
+          <div class="sw-role">Nav · headings · hero bg</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#3A7BFF;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Sky Blue</span><span class="sw-usage-badge">Accent</span></div>
+          <div class="sw-hex">#3A7BFF</div>
+          <div class="sw-role">CTAs · pills · links · active nav</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#1A5FE0;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Sky Dark</span></div>
+          <div class="sw-hex">#1A5FE0</div>
+          <div class="sw-role">CTA hover states</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#F0F5FF;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Cloud</span></div>
+          <div class="sw-hex">#F0F5FF</div>
+          <div class="sw-role">Hero bg · pill bg · section bg</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#C8D9FF; border-top: 1px solid #dce8ff;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Mist Blue</span></div>
+          <div class="sw-hex">#C8D9FF</div>
+          <div class="sw-role">Pill borders · card accents</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#6B7280;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Slate</span></div>
+          <div class="sw-hex">#6B7280</div>
+          <div class="sw-role">Body copy · captions</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#FFFFFF; outline: 1px solid #e5e7eb;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">White</span></div>
+          <div class="sw-hex">#FFFFFF</div>
+          <div class="sw-role">Cards · nav · surfaces</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#22C55E;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Mint</span></div>
+          <div class="sw-hex">#22C55E</div>
+          <div class="sw-role">Live badge · success states</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#EF4444;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Alert Red</span></div>
+          <div class="sw-hex">#EF4444</div>
+          <div class="sw-role">Error states only</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background: rgba(13,17,23,0.08); outline: 1px solid #e5e7eb;"></div>
+        <div class="sw-info">
+          <div class="sw-main"><span class="sw-name">Border</span></div>
+          <div class="sw-hex">rgba(13,17,23,0.08)</div>
+          <div class="sw-role">All card borders</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- TYPOGRAPHY -->
+  <section class="section">
+    <p class="section-label">03 · Typography</p>
+    <h2 class="section-title">Type system</h2>
+    <p class="section-sub">Syne 800 for display impact. DM Sans 300–500 for body legibility. Same system as ZoneFolio platform — consistent across all templates.</p>
+    <div class="type-showcase">
+      <div class="type-row">
+        <div class="type-meta"><strong>Display</strong>Syne 800<br>48px / −2px tracking</div>
+        <div class="t-display">Na8am <span>نغم</span></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Section heading</strong>Syne 700<br>28–32px / −0.8px</div>
+        <div class="t-h1">Featured Work</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Subheading</strong>Syne 700<br>20px / −0.3px</div>
+        <div class="t-h2">Technical Proficiency</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Body</strong>DM Sans 400<br>15px / 1.7 lh</div>
+        <div class="t-body">Passionate software engineer with a knack for building scalable web applications. Specializing in full-stack development and clean, user-friendly interfaces.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Section label</strong>DM Sans 500<br>10px / 1.5px tracking</div>
+        <div class="t-label">Portfolio Showcase</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><strong>Caption / tag</strong>DM Sans 400<br>12px</div>
+        <div class="t-caption">React.js · Node.js · TypeScript · Next.js · AWS · MongoDB</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- LOGO -->
+  <section class="section">
+    <p class="section-label">04 · Logo system</p>
+    <h2 class="section-title">ZoneFolio logo usage</h2>
+    <p class="section-sub">The "Zf" mark in three contexts used throughout this template. The badge always appears on free tier portfolios.</p>
+    <div class="logo-variants">
+      <div class="lv-wrapper">
+        <div class="lv lv-dark">
+          <div class="lv-icon">Zf</div>
+          <span class="lv-name">ZoneFolio</span>
+        </div>
+        <p class="lv-label">Dark context — footer badge on light bg</p>
+      </div>
+      <div class="lv-wrapper">
+        <div class="lv lv-light">
+          <div class="lv-icon">Zf</div>
+          <span class="lv-name">ZoneFolio</span>
+        </div>
+        <p class="lv-label">Light context — nav watermark on white</p>
+      </div>
+      <div class="lv-wrapper">
+        <div class="lv lv-accent">
+          <div class="lv-icon">Zf</div>
+          <span class="lv-name">ZoneFolio</span>
+        </div>
+        <p class="lv-label">Accent context — email / share previews</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ZF BADGE PLACEMENT -->
+  <section class="section">
+    <p class="section-label">05 · Badge placement</p>
+    <h2 class="section-title">"Made with ZoneFolio" badge</h2>
+    <p class="section-sub">Required on all free tier portfolios. Two approved badge styles — use dark on light backgrounds, light on dark backgrounds.</p>
+    <div class="badge-spec">
+      <div class="bs-card">
+        <div class="bs-preview">
+          <div class="bs-badge-dark">
+            <div class="bs-zf">Zf</div>
+            <span class="bs-text-w">Made with ZoneFolio</span>
+          </div>
+        </div>
+        <p class="bs-label">Style</p>
+        <p class="bs-placement">Dark pill — use on white/light sections</p>
+      </div>
+      <div class="bs-card">
+        <div class="bs-preview">
+          <div class="bs-badge-light">
+            <div class="bs-zf">Zf</div>
+            <span class="bs-text-d">Made with ZoneFolio</span>
+          </div>
+        </div>
+        <p class="bs-label">Style</p>
+        <p class="bs-placement">Light pill — use on ink/dark sections</p>
+      </div>
+      <div class="bs-card">
+        <p class="bs-label">Placement rules</p>
+        <p class="bs-placement" style="margin-bottom:8px;">Footer · bottom-right</p>
+        <ul style="font-size:12px; color:var(--gray); padding-left:14px; line-height:1.8; font-weight:300;">
+          <li>Always visible — never hidden under content</li>
+          <li>Fixed position: bottom 20px, right 20px</li>
+          <li>Minimum size: 22px icon + label</li>
+          <li>Link: href="https://zonefolio.app"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- UI ELEMENTS -->
+  <section class="section">
+    <p class="section-label">06 · UI elements</p>
+    <h2 class="section-title">Template UI components</h2>
+    <p class="section-sub">The pill badge system used across all sections for labeling. All pills use Sky Blue with 30% opacity border.</p>
+    <div class="pills-showcase">
+      <div class="pill-demo"><div class="pill-dot" style="background:#3A7BFF;"></div>Welcome to my portfolio</div>
+      <div class="pill-demo"><div class="pill-dot" style="background:#3A7BFF;"></div>About Me</div>
+      <div class="pill-demo"><div class="pill-dot" style="background:#3A7BFF;"></div>Skills & Expertise</div>
+      <div class="pill-demo"><div class="pill-dot" style="background:#3A7BFF;"></div>Professional Journey</div>
+      <div class="pill-demo"><div class="pill-dot" style="background:#3A7BFF;"></div>Portfolio Showcase</div>
+      <div class="pill-demo"><div class="pill-dot" style="background:#3A7BFF;"></div>Additional Work</div>
+      <div class="pill-demo"><div class="pill-dot" style="background:#3A7BFF;"></div>Get in Touch</div>
+    </div>
+    <p style="font-size:11px; color:var(--gray); font-weight:300; margin-top:8px;">All pill dots must be Sky Blue #3A7BFF — no exceptions. The "Professional Journey" green dot is a bug to fix.</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- SECTION ANATOMY -->
+  <section class="section">
+    <p class="section-label">07 · Section anatomy</p>
+    <h2 class="section-title">Template sections</h2>
+    <p class="section-sub">Four sections, each with a pill label, Syne heading, and content below. Split layout (text + image card) used in hero and about.</p>
+    <div class="sections-grid">
+      <div class="sec-card">
+        <span class="sec-tier">Free tier</span>
+        <div class="sec-name">Home / Hero</div>
+        <div class="sec-desc">Name as display heading, role as subheading, two CTAs, social links row. Profile image card on the right.</div>
+        <div class="sec-elements">
+          <span class="sec-tag">Pill badge</span>
+          <span class="sec-tag">Syne 800 name</span>
+          <span class="sec-tag">CTA buttons</span>
+          <span class="sec-tag">Social links</span>
+          <span class="sec-tag">Profile card</span>
+        </div>
+      </div>
+      <div class="sec-card">
+        <span class="sec-tier">Free tier</span>
+        <div class="sec-name">About</div>
+        <div class="sec-desc">Bio with "See more" toggle. Skills tag grid. Work experience timeline cards. Profile image repeated right.</div>
+        <div class="sec-elements">
+          <span class="sec-tag">Bio text</span>
+          <span class="sec-tag">Skill tags</span>
+          <span class="sec-tag">Experience cards</span>
+          <span class="sec-tag">Profile card</span>
+        </div>
+      </div>
+      <div class="sec-card">
+        <span class="sec-tier">Free tier</span>
+        <div class="sec-name">Projects</div>
+        <div class="sec-desc">Featured project as a large hero card. Additional work in a 3-column grid. Project images, tags, links.</div>
+        <div class="sec-elements">
+          <span class="sec-tag">Featured card</span>
+          <span class="sec-tag">3-col grid</span>
+          <span class="sec-tag">Project tags</span>
+          <span class="sec-tag">Image placeholders</span>
+        </div>
+      </div>
+      <div class="sec-card">
+        <span class="sec-tier">Free tier</span>
+        <div class="sec-name">Contact</div>
+        <div class="sec-desc">Centered heading. Contact method cards: email, phone, WhatsApp, location. Icon with rounded colored background.</div>
+        <div class="sec-elements">
+          <span class="sec-tag">Contact pills</span>
+          <span class="sec-tag">Icon cards</span>
+          <span class="sec-tag">Location</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero preview -->
+    <div class="anatomy-card">
+      <div class="anatomy-preview">
+        <div class="preview-nav">
+          <span class="pn-logo">Na8am</span>
+          <div class="pn-links">
+            <a class="pn-link active">Home</a>
+            <a class="pn-link">About</a>
+            <a class="pn-link">Projects</a>
+            <a class="pn-link">Contact</a>
+          </div>
+        </div>
+        <div class="preview-hero">
+          <div class="ph-left">
+            <div class="ph-pill"><div class="pill-dot" style="background:#3A7BFF; width:6px;height:6px;"></div>Welcome to my portfolio</div>
+            <div class="ph-name">Na8am</div>
+            <div class="ph-title">Software Engineer & Full Stack Developer</div>
+            <div class="ph-btns">
+              <button class="ph-btn-primary">Get in touch →</button>
+              <button class="ph-btn-outline">View my work ↓</button>
+            </div>
+          </div>
+          <div class="ph-right">
+            <div class="ph-img-card">
+              <div class="ph-img-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3A7BFF" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              </div>
+              <span class="ph-img-label">Profile image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="anatomy-notes">
+        <div class="anatomy-note">
+          <span class="an-num">A · Navbar</span>
+          <span class="an-label">Site title + nav links</span>
+          <span class="an-desc">White surface, 1px bottom border. Active link has Sky Blue underline. ZoneFolio badge links here on free tier.</span>
+        </div>
+        <div class="anatomy-note">
+          <span class="an-num">B · Hero left</span>
+          <span class="an-label">Pill + name + title + CTAs</span>
+          <span class="an-desc">Name in Syne 800 at 48–64px. Title in DM Sans 300 slate. Two CTAs: primary filled + outline ghost.</span>
+        </div>
+        <div class="anatomy-note">
+          <span class="an-num">C · Image card</span>
+          <span class="an-label">Profile photo placeholder</span>
+          <span class="an-desc">Cloud bg card, rounded 14px. Empty state shows icon + "Profile image" label. Reduce height when empty.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- VOICE -->
+  <section class="section">
+    <p class="section-label">08 · Voice & copy</p>
+    <h2 class="section-title">Copy tone for Na8am</h2>
+    <p class="section-sub">The template should feel like a real person talking — not a job application. Confident, direct, specific.</p>
+    <div class="voice-grid">
+      <div class="voice-card do">
+        <div class="vc-label">Write like this</div>
+        <div class="vc-item">Use the user's actual name as the hero display title</div>
+        <div class="vc-item">Short, punchy bio — one to two sentences max in the hero</div>
+        <div class="vc-item">Skills as plain tags — no percentage bars</div>
+        <div class="vc-item">Project titles that describe what the project does</div>
+        <div class="vc-item">"Get in touch" — action verb CTA, not "Contact me"</div>
+        <div class="vc-item">Social links without labels — the icon is enough</div>
+      </div>
+      <div class="voice-card dont">
+        <div class="vc-label">Avoid this</div>
+        <div class="vc-item">"Welcome to my portfolio" as default hero text — it's filler</div>
+        <div class="vc-item">Skill progress bars with made-up percentages</div>
+        <div class="vc-item">"Passionate developer who loves building things"</div>
+        <div class="vc-item">Project descriptions longer than two lines of body text</div>
+        <div class="vc-item">All-caps section headers — sentence case only</div>
+        <div class="vc-item">Generic placeholder text left in by the user</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- FIX LIST -->
+  <section class="section">
+    <p class="section-label">09 · Open issues</p>
+    <h2 class="section-title">Fixes before launch</h2>
+    <p class="section-sub">Seven design and technical issues observed on the live template. Ordered by visual impact.</p>
+    <div class="fix-list">
+      <div class="fix-item">
+        <span class="fix-num">01</span>
+        <div class="fix-content">
+          <div class="fix-title">Text breaking mid-word in bio</div>
+          <div class="fix-desc">The About section bio breaks words mid-character — "scal able", "ful l-stack", "user-f riendly". Add <code>overflow-wrap: break-word; word-break: normal;</code> to the bio paragraph container.</div>
+        </div>
+        <span class="fix-priority priority-high">High</span>
+      </div>
+      <div class="fix-item">
+        <span class="fix-num">02</span>
+        <div class="fix-content">
+          <div class="fix-title">Contact section pink/red background bleed</div>
+          <div class="fix-desc">A color is leaking from below the contact section into the navbar area. Check section background declarations, z-index stacking, and any gradient or color overflow from child elements.</div>
+        </div>
+        <span class="fix-priority priority-high">High</span>
+      </div>
+      <div class="fix-item">
+        <span class="fix-num">03</span>
+        <div class="fix-content">
+          <div class="fix-title">Inconsistent pill dot colors</div>
+          <div class="fix-desc">The "Professional Journey" section badge renders with a green dot, while all other section badges use Sky Blue. All pill dots must be #3A7BFF — standardize across every section badge component.</div>
+        </div>
+        <span class="fix-priority priority-high">High</span>
+      </div>
+      <div class="fix-item">
+        <span class="fix-num">04</span>
+        <div class="fix-content">
+          <div class="fix-title">ZoneFolio badge missing</div>
+          <div class="fix-desc">The free tier badge "Made with ZoneFolio" is absent from the template. Add as a fixed-position element: bottom 20px, right 20px, using the dark pill badge style. Link to zonefolio.app.</div>
+        </div>
+        <span class="fix-priority priority-high">High</span>
+      </div>
+      <div class="fix-item">
+        <span class="fix-num">05</span>
+        <div class="fix-content">
+          <div class="fix-title">Profile image card empty state too tall</div>
+          <div class="fix-desc">When no profile image is uploaded, the card takes up excessive vertical space and the "Profile Image" label looks like a broken component. Reduce card height in the empty state or add a proper designed placeholder with a prompt to upload.</div>
+        </div>
+        <span class="fix-priority priority-med">Med</span>
+      </div>
+      <div class="fix-item">
+        <span class="fix-num">06</span>
+        <div class="fix-content">
+          <div class="fix-title">Navbar shows "Portfolio" as static text</div>
+          <div class="fix-desc">The left nav wordmark is hardcoded as "Portfolio" — it should pull from the user's site title or display name field dynamically. Update the navbar component to bind to the user data API response.</div>
+        </div>
+        <span class="fix-priority priority-med">Med</span>
+      </div>
+      <div class="fix-item">
+        <span class="fix-num">07</span>
+        <div class="fix-content">
+          <div class="fix-title">Animation issues on load and scroll</div>
+          <div class="fix-desc">Entrance animations need review — some appear janky or repeat unexpectedly on scroll. Audit all framer-motion or CSS animation triggers. Entrance animations should fire once on mount only, not on scroll re-entry.</div>
+        </div>
+        <span class="fix-priority priority-low">Low</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- PAGE FOOTER -->
+<footer class="page-footer">
+  <div class="pf-left">
+    <div class="pf-zf">Zf</div>
+    <span class="pf-text">ZoneFolio · Brand Identity Document · Na8am template</span>
+  </div>
+  <span class="pf-right">Your portfolio. Your zone.</span>
+</footer>
+
+</body>
+</html>

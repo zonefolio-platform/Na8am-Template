@@ -1,7 +1,6 @@
 // src/components/sections/About.tsx
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import TruncatedText from "@/components/TruncatedText";
@@ -104,6 +103,7 @@ export default function About({ data }: AboutProps) {
                     src={data.image!}
                     alt="Profile"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 480px"
                     className="object-cover"
                   />
                 </div>
@@ -141,7 +141,7 @@ export default function About({ data }: AboutProps) {
             <div className="flex flex-wrap gap-3">
               {validSkills.map((skill, i) => (
                 <motion.span
-                  key={i}
+                  key={skill}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -150,8 +150,8 @@ export default function About({ data }: AboutProps) {
                   style={{
                     fontFamily: "var(--brand-font-body)",
                     color: "var(--brand-primary)",
-                    background: "rgba(58,123,255,0.06)",
-                    border: "1px solid rgba(58,123,255,0.3)",
+                    background: "var(--brand-primary-subtle)",
+                    border: "1px solid var(--brand-primary-border-subtle)",
                   }}
                 >
                   {skill}
@@ -190,13 +190,14 @@ export default function About({ data }: AboutProps) {
             <div className="space-y-4">
               {validExperience.map((exp, i) => (
                 <motion.div
-                  key={i}
+                  key={`${exp.position}-${exp.company}`}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.6 }}
-                  className="p-6 bg-white"
+                  className="p-6"
                   style={{
+                    background: "var(--brand-surface)",
                     borderRadius: "14px",
                     border: "1px solid var(--brand-border)",
                     borderLeft: "3px solid var(--brand-primary)",
@@ -287,13 +288,14 @@ export default function About({ data }: AboutProps) {
             <div className="space-y-4">
               {validEducation.map((edu, i) => (
                 <motion.div
-                  key={i}
+                  key={`${edu.degree}-${edu.university}`}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.6 }}
-                  className="p-6 bg-white"
+                  className="p-6"
                   style={{
+                    background: "var(--brand-surface)",
                     borderRadius: "14px",
                     border: "1px solid var(--brand-border)",
                     borderLeft: "3px solid var(--brand-primary)",

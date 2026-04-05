@@ -35,7 +35,12 @@ yarn-error.log*
 .env.local
 # vercel
 .vercel
+.claude
+.git 
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# turbopack dev cache (local /tmp symlink artifacts)
+/var/

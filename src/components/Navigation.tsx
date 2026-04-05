@@ -69,23 +69,25 @@ export default function Navigation({ sections, heroName }: NavigationProps) {
     <>
       {/* ── Desktop & Mobile bar ── */}
       <nav
-        className="sticky top-0 z-40 w-full h-14 flex items-center justify-between px-6 lg:px-12"
+        className="sticky top-0 z-40 w-full h-14 flex items-center px-6 lg:px-12"
         style={{
           background: "var(--brand-secondary)",
           borderBottom: "1px solid rgba(255,255,255,0.06)",
           boxShadow: "0 1px 8px rgba(13,17,23,0.06)",
         }}
       >
-        {/* Logo */}
-        <button
-          onClick={() => scrollTo("hero")}
-          className="text-white text-[15px] tracking-[-0.3px] hover:opacity-80 transition-opacity"
-          style={{ fontFamily: "var(--brand-font-heading)", fontWeight: 700 }}
-        >
-          {displayName}
-        </button>
+        {/* Logo — left */}
+        <div className="flex-1">
+          <button
+            onClick={() => scrollTo("hero")}
+            className="text-white text-[15px] tracking-[-0.3px] hover:opacity-80 transition-opacity"
+            style={{ fontFamily: "var(--brand-font-heading)", fontWeight: 700 }}
+          >
+            {displayName}
+          </button>
+        </div>
 
-        {/* Desktop links */}
+        {/* Desktop links — centered */}
         <div className="hidden md:flex items-center gap-8">
           {sections
             .filter((s) => s !== "hero")
@@ -115,26 +117,28 @@ export default function Navigation({ sections, heroName }: NavigationProps) {
             ))}
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-[5px] p-2 touch-target"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-        >
-          <motion.span
-            animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 7 : 0 }}
-            className="w-5 h-0.5 bg-white rounded-full block origin-center"
-          />
-          <motion.span
-            animate={{ opacity: isOpen ? 0 : 1 }}
-            className="w-5 h-0.5 bg-white rounded-full block"
-          />
-          <motion.span
-            animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -7 : 0 }}
-            className="w-5 h-0.5 bg-white rounded-full block origin-center"
-          />
-        </button>
+        {/* Right slot — hamburger on mobile, spacer on desktop */}
+        <div className="flex-1 flex justify-end">
+          <button
+            className="md:hidden flex flex-col gap-[5px] p-2 min-h-[44px] min-w-[44px] items-center justify-center"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+          >
+            <motion.span
+              animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 7 : 0 }}
+              className="w-5 h-0.5 bg-white rounded-full block origin-center"
+            />
+            <motion.span
+              animate={{ opacity: isOpen ? 0 : 1 }}
+              className="w-5 h-0.5 bg-white rounded-full block"
+            />
+            <motion.span
+              animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -7 : 0 }}
+              className="w-5 h-0.5 bg-white rounded-full block origin-center"
+            />
+          </button>
+        </div>
       </nav>
 
       {/* ── Mobile fullscreen menu ── */}
