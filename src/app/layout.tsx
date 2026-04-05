@@ -1,58 +1,44 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Syne, DM_Sans } from "next/font/google";
 import QueryProvidor from "@/providers/query-provider";
 import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-syne",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Template | Professional & Modern",
+  title: "Na8am — Portfolio",
   description:
-    "A beautiful, responsive portfolio template built with Next.js, Tailwind CSS, and modern web technologies. Perfect for showcasing your work professionally.",
-  keywords: [
-    "portfolio",
-    "template",
-    "next.js",
-    "tailwind",
-    "responsive",
-    "modern",
-  ],
-  authors: [{ name: "Portfolio Template" }],
-  creator: "Portfolio Template",
+    "Na8am by ZoneFolio — a free portfolio template for developers, designers, and freelancers.",
+  keywords: ["portfolio", "template", "na8am", "zonefolio", "developer"],
+  authors: [{ name: "ZoneFolio" }],
+  creator: "ZoneFolio",
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Portfolio Template | Professional & Modern",
-    description:
-      "A beautiful, responsive portfolio template built with Next.js, Tailwind CSS, and modern web technologies.",
-    siteName: "Portfolio Template",
+    title: "Na8am — Portfolio",
+    description: "A free portfolio template by ZoneFolio.",
+    siteName: "Na8am",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio Template | Professional & Modern",
-    description:
-      "A beautiful, responsive portfolio template built with Next.js, Tailwind CSS, and modern web technologies.",
+    title: "Na8am — Portfolio",
+    description: "A free portfolio template by ZoneFolio.",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "google-site-verification",
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -61,12 +47,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`scroll-smooth ${syne.variable} ${dmSans.variable}`}
+    >
       <head>
-        <meta name="theme-color" content="#2563eb" />
+        <meta name="theme-color" content="#0D1117" />
         <meta name="color-scheme" content="light" />
       </head>
-      <body className={`antialiased ${inter.className}`}>
+      <body className="antialiased">
         <QueryProvidor>
           <div className="min-h-screen flex flex-col">
             <main className="flex-1">{children}</main>
