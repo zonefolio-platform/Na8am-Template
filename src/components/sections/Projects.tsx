@@ -17,13 +17,14 @@ export default function Projects({ data }: ProjectsProps) {
 
   const featured = validProjects[0];
   const rest = validProjects.slice(1);
+  const featuredHasImage = isFilled(featured.image);
 
   return (
     <section
       className="w-full"
       style={{ background: "var(--brand-background)" }}
     >
-      <div className="max-w-[960px] mx-auto px-6 lg:px-8 py-20 space-y-16">
+      <div className="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
         {/* ── Section header ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,6 +38,7 @@ export default function Projects({ data }: ProjectsProps) {
             Portfolio showcase
           </span>
           <h2
+            className="w-max"
             style={{
               fontFamily: "var(--brand-font-heading)",
               fontWeight: 700,
@@ -55,7 +57,7 @@ export default function Projects({ data }: ProjectsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="p-8 lg:p-10"
+          className="p-6 lg:p-8"
           style={{
             background: "var(--brand-surface)",
             borderRadius: "14px",
@@ -63,12 +65,12 @@ export default function Projects({ data }: ProjectsProps) {
           }}
         >
           <div
-            className={`flex flex-col gap-10 ${
-              isFilled(featured.image) ? "lg:flex-row lg:items-center" : ""
+            className={`flex flex-col gap-8 ${
+              featuredHasImage ? "lg:flex-row lg:items-center" : ""
             }`}
           >
-            {/* Text */}
-            <div className="space-y-6 lg:flex-1">
+            {/* Text — full width when no image */}
+            <div className={`flex flex-col items-start gap-5 ${featuredHasImage ? "lg:flex-1" : "w-full"}`}>
               <span className="pill-badge">
                 <span className="pill-badge-dot" />
                 Featured work
@@ -93,7 +95,7 @@ export default function Projects({ data }: ProjectsProps) {
                 >
                   <TruncatedText
                     text={featured.description!}
-                    limit={200}
+                    lines={featuredHasImage ? 4 : 6}
                     className="text-base leading-relaxed"
                   />
                 </div>
@@ -116,7 +118,7 @@ export default function Projects({ data }: ProjectsProps) {
                   ))}
                 </div>
               )}
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap gap-3">
                 {isFilled(featured.liveUrl) && (
                   <a
                     href={featured.liveUrl}
@@ -167,7 +169,7 @@ export default function Projects({ data }: ProjectsProps) {
             </div>
 
             {/* Image — only if filled */}
-            {isFilled(featured.image) && (
+            {featuredHasImage && (
               <div className="lg:flex-1 lg:max-w-[420px]">
                 <div
                   className="relative w-full aspect-video overflow-hidden"
@@ -214,7 +216,7 @@ export default function Projects({ data }: ProjectsProps) {
                 >
                   {/* Image */}
                   {isFilled(project.image) && (
-                    <div className="relative w-full aspect-video overflow-hidden">
+                    <div className="relative w-full aspect-video overflow-hidden flex-shrink-0">
                       <Image
                         src={project.image!}
                         alt={project.name}
@@ -225,84 +227,87 @@ export default function Projects({ data }: ProjectsProps) {
                     </div>
                   )}
 
-                  {/* Content */}
-                  <div className="flex flex-col flex-1 p-5 space-y-3">
-                    <h3
-                      className="text-base font-semibold"
-                      style={{
-                        fontFamily: "var(--brand-font-heading)",
-                        color: "var(--brand-text-primary)",
-                      }}
-                    >
-                      {project.name}
-                    </h3>
-
-                    {isFilled(project.description) && (
-                      <div
+                  {/* Content: title + description grow, tech + links fixed at bottom */}
+                  <div className="flex flex-col flex-1 p-5">
+                    {/* Top — grows */}
+                    <div className="flex-1 space-y-2 mb-4">
+                      <h3
+                        className="text-base font-semibold"
                         style={{
-                          color: "var(--brand-text-secondary)",
-                          fontFamily: "var(--brand-font-body)",
+                          fontFamily: "var(--brand-font-heading)",
+                          color: "var(--brand-text-primary)",
                         }}
                       >
-                        <TruncatedText
-                          text={project.description!}
-                          limit={100}
-                          className="text-sm leading-relaxed"
-                        />
-                      </div>
-                    )}
+                        {project.name}
+                      </h3>
+                      {isFilled(project.description) && (
+                        <div
+                          style={{
+                            color: "var(--brand-text-secondary)",
+                            fontFamily: "var(--brand-font-body)",
+                          }}
+                        >
+                          <TruncatedText
+                            text={project.description!}
+                            lines={3}
+                            className="text-sm leading-relaxed"
+                          />
+                        </div>
+                      )}
+                    </div>
 
-                    {isFilled(project.technologies) && (
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {project.technologies!.filter(isFilled).map((tech, j) => (
-                          <span
-                            key={j}
-                            className="px-2 py-0.5 text-xs rounded-full"
-                            style={{
-                              fontFamily: "var(--brand-font-body)",
-                              color: "var(--brand-text-secondary)",
-                              background: "var(--brand-background)",
-                              border: "1px solid var(--brand-border)",
-                            }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    {/* Bottom — always pinned */}
+                    <div className="space-y-3">
+                      {isFilled(project.technologies) && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.technologies!.filter(isFilled).map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-0.5 text-xs rounded-full"
+                              style={{
+                                fontFamily: "var(--brand-font-body)",
+                                color: "var(--brand-text-secondary)",
+                                background: "var(--brand-background)",
+                                border: "1px solid var(--brand-border)",
+                              }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
 
-                    {/* Links */}
-                    {(isFilled(project.liveUrl) ||
-                      isFilled(project.githubUrl)) && (
-                      <div className="flex gap-3 pt-2 mt-auto">
-                        {isFilled(project.liveUrl) && (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-cta-primary flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-white transition-colors duration-200"
-                            style={{ fontFamily: "var(--brand-font-body)" }}
-                          >
-                            View
-                          </a>
-                        )}
-                        {isFilled(project.githubUrl) && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-cta-ghost flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-200"
-                            style={{
-                              fontFamily: "var(--brand-font-body)",
-                              color: "var(--brand-text-primary)",
-                              border: "1px solid var(--brand-border-mid)",
-                            }}
-                          >
-                            Code
-                          </a>
-                        )}
-                      </div>
-                    )}
+                      {(isFilled(project.liveUrl) || isFilled(project.githubUrl)) && (
+                        <div className="flex gap-3">
+                          {isFilled(project.liveUrl) && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn-cta-primary flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-white transition-colors duration-200"
+                              style={{ fontFamily: "var(--brand-font-body)" }}
+                            >
+                              View
+                            </a>
+                          )}
+                          {isFilled(project.githubUrl) && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn-cta-ghost flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-200"
+                              style={{
+                                fontFamily: "var(--brand-font-body)",
+                                color: "var(--brand-text-primary)",
+                                border: "1px solid var(--brand-border-mid)",
+                              }}
+                            >
+                              Code
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </motion.article>
               ))}

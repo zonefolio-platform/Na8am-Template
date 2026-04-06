@@ -136,7 +136,7 @@ export default function Contact({ data }: ContactProps) {
         overflow: "hidden",
       }}
     >
-      <div className="max-w-[960px] mx-auto px-6 lg:px-8 py-20 space-y-12">
+      <div className="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-12">
         {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

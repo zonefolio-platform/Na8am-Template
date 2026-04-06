@@ -28,7 +28,7 @@ export default function Hero({ data }: HeroProps) {
       className="w-full min-h-screen flex items-center"
       style={{ background: "var(--brand-secondary)" }}
     >
-      <div className="w-full max-w-[960px] mx-auto px-6 lg:px-8 py-20">
+      <div className="w-full max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div
           className={`flex flex-col gap-12 ${
             hasImage ? "lg:flex-row lg:items-center lg:justify-between" : ""
@@ -60,12 +60,14 @@ export default function Hero({ data }: HeroProps) {
                 initial={{ y: 24, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.7 }}
-                className="text-white leading-[1.0]"
+                className="text-white leading-[1.05]"
                 style={{
                   fontFamily: "var(--brand-font-heading)",
                   fontWeight: 800,
-                  fontSize: "clamp(2.5rem, 6vw, 4rem)",
+                  fontSize: "clamp(2rem, 6vw, 4rem)",
                   letterSpacing: "-2px",
+                  wordBreak: "break-word",
+                  overflowWrap: "break-word",
                 }}
               >
                 {data.name}

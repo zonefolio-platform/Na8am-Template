@@ -1,92 +1,80 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useRef, useEffect } from "react";
 
 type TruncatedTextProps = {
   text: string;
-  limit: number;
+  lines?: number;
+  // kept for API compat — ignored, CSS clamping is used instead
+  limit?: number;
   className?: string;
   showMoreClassName?: string;
 };
 
 export default function TruncatedText({
   text,
-  limit,
+  lines = 3,
   className = "",
   showMoreClassName = "",
 }: TruncatedTextProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const shouldTruncate = text.length > limit;
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const ref = useRef<HTMLParagraphElement>(null);
 
-  if (!shouldTruncate) {
-    return <p className={className}>{text}</p>;
-  }
-
-  const displayText = isExpanded ? text : text.slice(0, limit) + "...";
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // Measure with clamp applied — if scrollHeight > visible height, text is cut
+    setIsOverflowing(el.scrollHeight > el.clientHeight + 1);
+  }, [text]);
 
   return (
-    <div className="space-y-3">
-      <motion.p
+    <div>
+      <p
+        ref={ref}
         className={className}
-        initial={false}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        style={
+          isExpanded
+            ? undefined
+            : {
+                display: "-webkit-box",
+                WebkitLineClamp: lines,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }
+        }
       >
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={isExpanded ? "full" : "truncated"}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+        {text}
+      </p>
+      {isOverflowing && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className={`mt-2 inline-flex items-center gap-1 text-sm font-medium transition-colors ${showMoreClassName}`}
+          style={{
+            color: "var(--brand-primary)",
+            fontFamily: "var(--brand-font-body)",
+          }}
+        >
+          {isExpanded ? "Show less" : "See more"}
+          <svg
+            className="w-3.5 h-3.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            style={{
+              transform: isExpanded ? "rotate(180deg)" : "none",
+              transition: "transform 0.2s",
+            }}
           >
-            {displayText}
-          </motion.span>
-        </AnimatePresence>
-      </motion.p>
-      <motion.button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors ${showMoreClassName}`}
-        whileHover={{ x: 2 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        {isExpanded ? (
-          <>
-            Show Less
-            <svg
-              className="w-4 h-4 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 15l7-7 7 7"
-              />
-            </svg>
-          </>
-        ) : (
-          <>
-            See More
-            <svg
-              className="w-4 h-4 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </>
-        )}
-      </motion.button>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

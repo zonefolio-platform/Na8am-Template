@@ -42,7 +42,7 @@ export default function About({ data }: AboutProps) {
       className="w-full"
       style={{ background: "var(--brand-surface-alt)" }}
     >
-      <div className="max-w-[960px] mx-auto px-6 lg:px-8 py-20 space-y-20">
+      <div className="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-20">
         {/* ── Bio ── */}
         {hasBio && (
           <motion.div
@@ -81,7 +81,7 @@ export default function About({ data }: AboutProps) {
               >
                 <TruncatedText
                   text={data.bio!}
-                  limit={300}
+                  lines={5}
                   className="text-base leading-relaxed"
                 />
               </div>

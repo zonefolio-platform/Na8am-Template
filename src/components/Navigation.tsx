@@ -43,6 +43,14 @@ export default function Navigation({ sections, heroName }: NavigationProps) {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
+      // If within 2px of the bottom, activate the last section
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+      if (atBottom && sections.length > 0) {
+        setActiveSection(sections[sections.length - 1]);
+        return;
+      }
+
       const scrollPos = window.scrollY + 80;
       for (const section of [...sections].reverse()) {
         const el = document.getElementById(section);
