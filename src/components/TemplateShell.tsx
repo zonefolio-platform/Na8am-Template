@@ -74,7 +74,7 @@ export default function TemplateShell({ data }: TemplateShellProps) {
 
       {/* ZoneFolio badge — always visible on free tier */}
       <a
-        href="https://zonefolio.app"
+        href="https://zonefolio.vercel.app"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Made with ZoneFolio"
