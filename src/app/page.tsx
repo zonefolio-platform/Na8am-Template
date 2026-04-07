@@ -11,6 +11,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
+  // Fire-and-forget view tracking — never blocks render
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const username = process.env.NEXT_PUBLIC_USERNAME;
+  if (apiBase && username) {
+    fetch(`${apiBase}/api/portfolio/${username}/view`, { method: "POST" }).catch(
+      () => {}
+    );
+  }
+
   const result = await fetchTemplateData();
 
   if (!result.ok) {
