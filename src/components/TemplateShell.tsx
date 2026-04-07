@@ -12,42 +12,8 @@ type TemplateShellProps = {
   data: TemplateData;
 };
 
-const fallbackData: TemplateData = {
-  hero: {
-    name: "Your Name",
-    title: "Creative Professional",
-  },
-  about: {
-    bio: "Passionate professional with expertise in delivering exceptional results.",
-  },
-  projects: {
-    projects: [
-      {
-        name: "Featured Portfolio Project",
-        description:
-          "A comprehensive showcase of creative work featuring modern design principles.",
-        technologies: ["Design", "Development", "Strategy"],
-        liveUrl: "https://example.com/project1",
-        githubUrl: "https://github.com/example/project1",
-      },
-      {
-        name: "Creative Campaign",
-        description:
-          "An innovative campaign that increased engagement and delivered measurable results.",
-        technologies: ["Marketing", "Design", "Analytics"],
-        liveUrl: "https://example.com/project2",
-        githubUrl: "https://github.com/example/project2",
-      },
-    ],
-  },
-  contact: {
-    email: "hello@example.com",
-    phone: "+1 (555) 123-4567",
-  },
-};
-
 export default function TemplateShell({ data }: TemplateShellProps) {
-  const templateData = Object.keys(data).length > 0 ? data : fallbackData;
+  const templateData = data;
 
   // Section visibility — only render sections that have data
   const showHero =

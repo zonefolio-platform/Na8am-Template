@@ -1,5 +1,5 @@
-import { Metadata } from 'next';
-import type { TemplateData } from './server-fetcher';
+import type { Metadata } from "next";
+import type { TemplateData } from "@/types/template";
 
 /**
  * Generate metadata from template data
