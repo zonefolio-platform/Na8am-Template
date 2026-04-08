@@ -72,8 +72,10 @@ export default function TemplateShell({ data }: TemplateShellProps) {
         </section>
       )}
 
-      {/* ZoneFolio badge — always visible on free tier */}
-      <a
+      {/* ZoneFolio badge — hidden only when plan is PRO and showBranding is explicitly false */}
+      {(templateData.meta?.plan !== "PRO" || templateData.meta?.showBranding !== false) && (
+       
+        <a
         href="https://zonefolio.vercel.app"
         target="_blank"
         rel="noopener noreferrer"
@@ -103,6 +105,7 @@ export default function TemplateShell({ data }: TemplateShellProps) {
           Made with ZoneFolio
         </span>
       </a>
+      )}
     </div>
   );
 }

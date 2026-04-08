@@ -12,7 +12,16 @@
   "about": {
     "bio": "Passionate software engineer with 5+ years building scalable web applications. I specialize in full-stack development and enjoy turning complex problems into clean, efficient solutions.",
     "image": "https://res.cloudinary.com/dsy0j0gh0/image/upload/v1775427835/ZF_uafpay.png",
-    "skills": ["React", "Next.js", "Node.js", "TypeScript", "GraphQL", "PostgreSQL", "AWS", "MongoDB"],
+    "skills": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "GraphQL",
+      "PostgreSQL",
+      "AWS",
+      "MongoDB"
+    ],
     "experience": [
       {
         "position": "Senior Software Engineer",
@@ -91,5 +100,9 @@
     "phone": "+1 (555) 123-4567",
     "location": "San Francisco, CA",
     "whatsapp": "15551234567"
+  },
+  "meta": {
+    "plan": "FREE",
+    "showBranding": true
   }
 }

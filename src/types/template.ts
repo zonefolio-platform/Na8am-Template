@@ -30,7 +30,13 @@ export interface Project {
   githubUrl?: string;
 }
 
+export interface TemplateMeta {
+  plan?: "FREE" | "PRO";
+  showBranding?: boolean;
+}
+
 export interface TemplateData {
+  meta?: TemplateMeta;
   hero?: {
     name?: string;
     title?: string;
