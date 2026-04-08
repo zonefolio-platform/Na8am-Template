@@ -35,12 +35,14 @@ export default function TruncatedText({
         className={className}
         style={
           isExpanded
-            ? undefined
+            ? { overflowWrap: "break-word", wordBreak: "break-word" }
             : {
                 display: "-webkit-box",
                 WebkitLineClamp: lines,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
+                overflowWrap: "break-word",
+                wordBreak: "break-word",
               }
         }
       >
